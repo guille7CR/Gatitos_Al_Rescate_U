@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="DAL\IGenericoDAL.cs" />
     <Compile Include="Entities\C_Adopciones.cs">
       <DependentUpon>PawLog_Model.tt</DependentUpon>
     </Compile>
@@ -110,9 +111,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DAL\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EntityDeploy Include="Entities\PawLog_Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
