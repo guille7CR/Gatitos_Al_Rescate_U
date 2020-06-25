@@ -11,8 +11,7 @@ namespace BackEnd.DAL
     {
 
         private readonly BDContext context;
-        //public IDALGenerico<Queja> quejaDAL;
-        //public IDALGenerico<TablaGeneral> tablaDAL;
+       
         public IGenericoDAL<T> genericDAL;
 
 
