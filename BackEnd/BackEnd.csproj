@@ -51,7 +51,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="DAL\GenericoDALImpl.cs" />
     <Compile Include="DAL\IGenericoDAL.cs" />
+    <Compile Include="DAL\UnidadDeTrabajo.cs" />
     <Compile Include="Entities\C_Adopciones.cs">
       <DependentUpon>PawLog_Model.tt</DependentUpon>
     </Compile>
