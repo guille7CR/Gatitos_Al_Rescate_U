@@ -133,7 +133,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\assets\img\bg-Masthead.jpg" />
+    <Content Include="Content\assets\img\bg-masthead.jpg" />
     <Content Include="Content\css\styles.css" />
     <Content Include="Content\assets\img\favicon.ico" />
     <Content Include="Content\assets\img\portfolio\fullsize\1.jpg" />
@@ -169,6 +169,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Cargas\" />
     <Folder Include="Models\" />
     <Folder Include="Scripts\" />
   </ItemGroup>
