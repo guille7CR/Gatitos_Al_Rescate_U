@@ -1,0 +1,91 @@
+﻿@model IEnumerable<FrontEnd.Models.C_AnimalesViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+<br />
+<h2>Listado de Animales</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.especie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.raza)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sexo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fechaNacimiento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.otrasSenas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.padecimientos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImagenURL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.C_Tamanos.tamanos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.C_Temperamentos.temperamento)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.especie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.raza)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sexo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fechaNacimiento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.otrasSenas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.padecimientos)
+            </td>
+            <td>
+                <img src="~/Cargas/@Html.DisplayFor(modelItem => item.ImagenURL)" style="width: 90px;" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.C_Tamanos.tamanos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.C_Temperamentos.temperamento)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.IdAnimal }) |
+                @Html.ActionLink("Details", "Details", new { id = item.IdAnimal }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.IdAnimal })
+            </td>
+        </tr>
+    }
+
+</table>

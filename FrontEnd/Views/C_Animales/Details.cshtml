@@ -1,0 +1,225 @@
+﻿@model FrontEnd.Models.C_AnimalesViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+<br />
+
+
+<h2>Detalles</h2>
+<br>
+
+<div>
+    <h4>Animales</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.C_Tamanos.tamanos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.C_Tamanos.tamanos)
+        </dd>
+
+        <br>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.C_Temperamentos.temperamento)
+        </dt>
+
+
+
+        <dd>
+            @Html.DisplayFor(model => model.C_Temperamentos.temperamento)
+        </dd>
+
+        <br>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <br>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.especie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.especie)
+        </dd>
+
+        <br>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.raza)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.raza)
+        </dd>
+
+        <br>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sexo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sexo)
+        </dd>
+
+        <br>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fechaNacimiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaNacimiento)
+        </dd>
+
+        <br>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.otrasSenas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.otrasSenas)
+        </dd>
+
+        <br>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.padecimientos)
+        </dt>
+
+        <br>
+
+        <dd>
+            @Html.DisplayFor(model => model.padecimientos)
+        </dd>
+
+        <br>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImagenURL)
+        </dt>
+
+        <dd>
+            <img src="~/Cargas/@Html.DisplayFor(model => model.ImagenURL)" style="max-width: 400px;" />
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Actualizar", "Edit", new { id = Model.IdAnimal }) |
+        @Html.ActionLink("Regresar a la lista", "Index")
+</p>
+
+
+
+@*<h2>Detalles</h2><br />
+
+    <div>
+
+        <hr />
+        <dl class="dl-horizontal">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.C_Tamanos.tamanos)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.C_Tamanos.tamanos)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.C_Temperamentos.temperamento)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.C_Temperamentos.temperamento)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.nombre)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.nombre)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.especie)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.especie)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.raza)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.raza)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.sexo)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.sexo)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.fechaNacimiento)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.fechaNacimiento)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.otrasSenas)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.otrasSenas)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.padecimientos)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.padecimientos)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ImagenURL)
+            </dt>
+
+            <dd>
+                <img src="~/Cargas/@Html.DisplayFor(model => model.ImagenURL)" style="max-width: 400px;" />
+            </dd>
+
+
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.IdAnimal }) |
+        @Html.ActionLink("Regresar a la lista", "Index")
+    </p>*@
