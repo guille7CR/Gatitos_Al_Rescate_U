@@ -50,20 +50,23 @@ namespace FrontEnd.Models
         public string otrasSenas { get; set; }
 
         [StringLength(250)]
+        [Required(ErrorMessage = "{0} es requerido")]
         [Display(Name = "Imagen")]
         public string ImagenURL { get; set; }
-
 
 
         [ForeignKey("C_Tamanos")]
         [Display(Name = "Tamaño")]
         [DataType(DataType.MultilineText)]
         public int? IdTamano { get; set; }
+     
+
 
         [ForeignKey("C_Temperamentos")]
         [Display(Name = "Temperamento")]
         [DataType(DataType.MultilineText)]
         public int? IdTemperamento { get; set; }
+       
 
 
         [DataType(DataType.Date)]
@@ -81,7 +84,11 @@ namespace FrontEnd.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<C_Adopciones> C_Adopciones { get; set; }
+
+        [ForeignKey("IdTamano")]
         public virtual C_Tamanos C_Tamanos { get; set; }
+
+        [ForeignKey("IdTemperamento")]
         public virtual C_Temperamentos C_Temperamentos { get; set; }
 
 
