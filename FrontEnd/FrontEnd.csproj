@@ -138,20 +138,26 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\assets\img\bg-masthead.jpg" />
+    <Content Include="Content\assets\img\face.png" />
+    <Content Include="Content\assets\img\insta.png" />
+    <Content Include="Content\assets\img\portfolio\fullsize\1.png" />
+    <Content Include="Content\assets\img\portfolio\fullsize\2.png" />
+    <Content Include="Content\assets\img\portfolio\fullsize\3.png" />
+    <Content Include="Content\assets\img\portfolio\fullsize\4.png" />
+    <Content Include="Content\assets\img\portfolio\fullsize\5.png" />
+    <Content Include="Content\assets\img\portfolio\fullsize\6.png" />
+    <Content Include="Content\assets\img\portfolio\fullsize\gatitos_Rescate1.png" />
+    <Content Include="Content\assets\img\portfolio\fullsize\gatitos_Rescate2.png" />
+    <Content Include="Content\assets\img\portfolio\thumbnails\1.png" />
+    <Content Include="Content\assets\img\portfolio\thumbnails\2.png" />
+    <Content Include="Content\assets\img\portfolio\thumbnails\3.png" />
+    <Content Include="Content\assets\img\portfolio\thumbnails\4.png" />
+    <Content Include="Content\assets\img\portfolio\thumbnails\5.png" />
+    <Content Include="Content\assets\img\portfolio\thumbnails\6.png" />
+    <Content Include="Content\assets\img\twitter.png" />
+    <Content Include="Content\assets\img\WhatsApp.png" />
     <Content Include="Content\css\styles.css" />
     <Content Include="Content\assets\img\favicon.ico" />
-    <Content Include="Content\assets\img\portfolio\fullsize\1.jpg" />
-    <Content Include="Content\assets\img\portfolio\fullsize\2.jpg" />
-    <Content Include="Content\assets\img\portfolio\fullsize\3.jpg" />
-    <Content Include="Content\assets\img\portfolio\fullsize\4.jpg" />
-    <Content Include="Content\assets\img\portfolio\fullsize\5.jpg" />
-    <Content Include="Content\assets\img\portfolio\fullsize\6.jpg" />
-    <Content Include="Content\assets\img\portfolio\thumbnails\1.jpg" />
-    <Content Include="Content\assets\img\portfolio\thumbnails\2.jpg" />
-    <Content Include="Content\assets\img\portfolio\thumbnails\3.jpg" />
-    <Content Include="Content\assets\img\portfolio\thumbnails\4.jpg" />
-    <Content Include="Content\assets\img\portfolio\thumbnails\5.jpg" />
-    <Content Include="Content\assets\img\portfolio\thumbnails\6.jpg" />
     <Content Include="Content\js\scripts.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -189,6 +195,7 @@
     <Content Include="Views\C_Animales\Delete.cshtml" />
     <Content Include="Views\C_Animales\Details.cshtml" />
     <Content Include="Views\C_Animales\Index.cshtml" />
+    <Content Include="Views\Home\History.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BackEnd\BackEnd.csproj">

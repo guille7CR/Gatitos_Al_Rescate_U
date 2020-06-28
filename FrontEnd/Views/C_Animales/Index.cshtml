@@ -2,96 +2,100 @@
 
 @{
 
-        ViewBag.Title = "Index";
-        Layout = "~/Views/Shared/_Layout.cshtml";
-    }
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
 
-    <div style="margin-top: 12%; margin-left: 10%; margin-right: 10%">
+<div style="margin-top: 12%; margin-left: 10%; margin-right: 10%">
 
-        <h1 style="text-align: center">Listado de Animales</h1>
-        <p>
-            @Html.ActionLink("Crear nuevo", "Create")
-        </p><br />
+    <h1 style="text-align: center">Listado de Animales</h1>
+    <p>
+        @Html.ActionLink("Crear nuevo", "Create")
+    </p><br />
 
-        <table class="table">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.especie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.raza)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sexo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fechaNacimiento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.otrasSenas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.padecimientos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImagenURL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdTamano)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdTemperamento)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
             <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.nombre)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.especie)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.raza)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.sexo)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.fechaNacimiento)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.otrasSenas)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.padecimientos)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ImagenURL)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.IdTamano)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.IdTemperamento)
-                </th>
-                <th></th>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.especie)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.raza)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.sexo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fechaNacimiento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.otrasSenas)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.padecimientos)
+                </td>
+                <td>
+                    <img src="~/Cargas/@Html.DisplayFor(modelItem => item.ImagenURL)" style="width: 150px; border-style:solid;border-color:black; border-radius:5px" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.C_Tamanos.tamanos)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.C_Temperamentos.temperamento)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.IdAnimal }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.IdAnimal }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.IdAnimal })
+                </td>
             </tr>
-
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.nombre)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.especie)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.raza)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.sexo)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.fechaNacimiento)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.otrasSenas)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.padecimientos)
-                    </td>
-                    <td>
-                        <img src="~/Cargas/@Html.DisplayFor(modelItem => item.ImagenURL)" style="width: 150px; border-style:solid;border-color:black; border-radius:5px" />
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.C_Tamanos.tamanos)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.C_Temperamentos.temperamento)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.IdAnimal }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.IdAnimal }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.IdAnimal })
-                    </td>
-                </tr>
-            }
+        }
 
 
 
-        </table>
+    </table>
 
-    </div>
+</div>
+<br />
+<br />
+<br />
+

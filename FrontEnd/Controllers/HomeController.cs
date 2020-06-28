@@ -26,5 +26,13 @@ namespace FrontEnd.Controllers
 
             return View();
         }
+
+
+        public ActionResult History()
+        {
+            ViewBag.Message = "Historia de la Organización";
+
+            return View();
+        }
     }
 }
