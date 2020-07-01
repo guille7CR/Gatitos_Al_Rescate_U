@@ -127,6 +127,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\C_AnimalesController.cs" />
+    <Compile Include="Controllers\EnviaCorreoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -137,6 +138,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Cargas\Jim.jpg" />
     <Content Include="Content\assets\img\bg-masthead.jpg" />
     <Content Include="Content\assets\img\face.png" />
     <Content Include="Content\assets\img\insta.png" />
@@ -179,7 +181,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Cargas\" />
+    <Folder Include="Correos\" />
     <Folder Include="Scripts\" />
   </ItemGroup>
   <ItemGroup>
@@ -196,6 +198,7 @@
     <Content Include="Views\C_Animales\Details.cshtml" />
     <Content Include="Views\C_Animales\Index.cshtml" />
     <Content Include="Views\Home\History.cshtml" />
+    <Content Include="Views\EnviaCorreo\EnviarCorreo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BackEnd\BackEnd.csproj">
