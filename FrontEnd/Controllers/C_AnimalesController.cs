@@ -16,8 +16,7 @@ namespace FrontEnd.Controllers
     public class C_AnimalesController : Controller
     {
 
-        private BDContext db = new BDContext();
-
+       
         private C_AnimalesViewModel Convertir(C_Animales animales)
         {
             C_AnimalesViewModel animalesViewModel = new C_AnimalesViewModel
@@ -29,10 +28,10 @@ namespace FrontEnd.Controllers
                 sexo = animales.sexo,
                 otrasSenas = animales.otrasSenas,
                 ImagenURL = animales.ImagenURL,
-                IdTamano = animales.IdTamano,
-                IdTemperamento = animales.IdTemperamento,
-                fechaNacimiento = animales.fechaNacimiento,
-                padecimientos = animales.padecimientos
+                IdTamano = (int)animales.IdTamano,
+                IdTemperamento = (int)animales.IdTemperamento,
+                fechaNacimiento = (DateTime)animales.fechaNacimiento,
+                padecimientos = animales.padecimientos,
 
             };
             return animalesViewModel;
@@ -54,7 +53,7 @@ namespace FrontEnd.Controllers
                 IdTamano = animalesViewModel.IdTamano,
                 IdTemperamento = animalesViewModel.IdTemperamento,
                 fechaNacimiento = animalesViewModel.fechaNacimiento,
-                padecimientos= animalesViewModel.padecimientos
+                padecimientos= animalesViewModel.padecimientos,
 
 
 
@@ -74,95 +73,114 @@ namespace FrontEnd.Controllers
                 animales = Unidad.genericDAL.GetAll().ToList();
             }
 
-            List<C_AnimalesViewModel> lista = new List<C_AnimalesViewModel>();
+            List<C_AnimalesViewModel> animalesVM = new List<C_AnimalesViewModel>();
+
+            C_AnimalesViewModel animalesViewModel;
 
             foreach (var item in animales)
             {
-                lista.Add(this.Convertir(item));
-            }
+                animalesViewModel = this.Convertir(item);
 
-            return View(lista);
+                using(UnidadDeTrabajo<C_Tamanos> unidad = new UnidadDeTrabajo<C_Tamanos>(new BDContext()))
+                {
+                    animalesViewModel.C_Tamanos = unidad.genericDAL.Get(animalesViewModel.IdTamano);
+                }
+
+                using (UnidadDeTrabajo<C_Temperamentos> unidad = new UnidadDeTrabajo<C_Temperamentos>(new BDContext()))
+                {
+                    animalesViewModel.C_Temperamentos = unidad.genericDAL.Get(animalesViewModel.IdTemperamento);
+                }
+
+                animalesVM.Add(animalesViewModel);
+
+            }
+            return View(animalesVM);
         }
 
 
         public ActionResult Create()
         {
-            ViewBag.IdTamano = new SelectList(db.C_Tamanos, "IdTamanos", "tamanos");
-            ViewBag.IdTemperamento = new SelectList(db.C_Temperamentos, "IdTemperamentos", "temperamento");
-            return View();
+            C_AnimalesViewModel animales = new C_AnimalesViewModel();
+
+            using(UnidadDeTrabajo<C_Temperamentos>unidad = new UnidadDeTrabajo<C_Temperamentos>(new BDContext()))
+            {
+                animales.Temperamentos = unidad.genericDAL.GetAll().ToList();
+            }
+
+            using (UnidadDeTrabajo<C_Tamanos> unidad = new UnidadDeTrabajo<C_Tamanos>(new BDContext()))
+            {
+                animales.Tamanos = unidad.genericDAL.GetAll().ToList();
+            }
+
+            return View(animales);
         }
 
 
 
+
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdAnimal,IdTamano,IdTemperamento,nombre,especie,raza,sexo,fechaNacimiento,otrasSenas,padecimientos,ImagenURL")] C_AnimalesViewModel animalesViewModel, HttpPostedFileBase UploadImage)
+        public ActionResult Create (C_Animales animales, HttpPostedFileBase UploadImage)
         {
-            
-                if (UploadImage != null)
+            if (UploadImage != null)
+            {
+                if (UploadImage.ContentType == "image/jpg" || UploadImage.ContentType == "image/png" ||
+                  UploadImage.ContentType == "image/bmp" || UploadImage.ContentType == "gif" ||
+                  UploadImage.ContentType == "image/jpeg")
+
+
                 {
-                    if (UploadImage.ContentType == "image/jpg" || UploadImage.ContentType == "image/png" ||
-                      UploadImage.ContentType == "image/bmp" || UploadImage.ContentType == "gif" ||
-                      UploadImage.ContentType == "image/jpeg")
+                    UploadImage.SaveAs(Server.MapPath("/") + "/Cargas/" + UploadImage.FileName);
+                    animales.ImagenURL = UploadImage.FileName;
 
-
-                    {
-                        UploadImage.SaveAs(Server.MapPath("/") + "/Cargas/" + UploadImage.FileName);
-                        animalesViewModel.ImagenURL = UploadImage.FileName;
-
-                    }
-
-                    else
-                        return View();
                 }
-
+                else return View();
+            }
                 else return View();
 
-                C_Animales animales = this.Convertir(animalesViewModel);
+            using (UnidadDeTrabajo<C_Animales> unidad = new UnidadDeTrabajo<C_Animales>(new BDContext()))
+            {
+                unidad.genericDAL.Add(animales);
+                unidad.Complete();
+            }
+
+            return RedirectToAction("Index");
+
+        }
+
+
+
+
+            public ActionResult Edit(int id)
+            {
+
+                C_AnimalesViewModel animales;
+                C_Animales animalDB;
 
                 using (UnidadDeTrabajo<C_Animales> unidad = new UnidadDeTrabajo<C_Animales>(new BDContext()))
                 {
-                    unidad.genericDAL.Add(animales);
-                    unidad.Complete();
-
+                animalDB = unidad.genericDAL.Get(id);
                 }
 
-                return RedirectToAction("Index");
+                 animales = this.Convertir(animalDB);
 
-        }
+                using (UnidadDeTrabajo<C_Temperamentos> unidad = new UnidadDeTrabajo<C_Temperamentos>(new BDContext()))
+                {
+                animales.Temperamentos = unidad.genericDAL.GetAll().ToList();
+                }
+
+               using (UnidadDeTrabajo<C_Tamanos> unidad = new UnidadDeTrabajo<C_Tamanos>(new BDContext()))
+               {
+                animales.Tamanos = unidad.genericDAL.GetAll().ToList();
+               }
+
+              return View(animales);
 
 
-        public async Task<ActionResult>Edit(int? id)
-        {
-
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            C_Animales animales = await db.C_Animales.FindAsync(id);
-            if (animales == null)
-            {
-                return HttpNotFound();
-            }
-
-            ViewBag.IdTamano = new SelectList(db.C_Tamanos, "IdTamanos", "tamanos", animales.IdTamano);
-            ViewBag.IdTemperamento = new SelectList(db.C_Temperamentos, "IdTemperamentos", "temperamento", animales.IdTemperamento);
-            return View(this.Convertir(animales));
-
-            //C_Animales animales;
-
-            //using (UnidadDeTrabajo<C_Animales> unidad = new UnidadDeTrabajo<C_Animales>(new BDContext()))
-            //{
-            //    animales = unidad.genericDAL.Get(id);
-
-            //}
-
-            //return View(this.Convertir(animales));
-        }
 
 
         [HttpPost]
-       public ActionResult Edit([Bind(Include = "IdAnimal,IdTamano,IdTemperamento,nombre,especie,raza,sexo,fechaNacimiento,otrasSenas,padecimientos,ImagenURL")] C_AnimalesViewModel animalesviewModel, HttpPostedFileBase UploadImage)
+       public ActionResult Edit(C_Animales animales, HttpPostedFileBase UploadImage)
         {
            
                 if (UploadImage != null)
@@ -175,7 +193,7 @@ namespace FrontEnd.Controllers
 
                     {
                         UploadImage.SaveAs(Server.MapPath("/") + "/Cargas/" + UploadImage.FileName);
-                        animalesviewModel.ImagenURL = UploadImage.FileName;
+                        animales.ImagenURL = UploadImage.FileName;
 
                     }
 
@@ -188,15 +206,13 @@ namespace FrontEnd.Controllers
                 using (UnidadDeTrabajo<C_Animales> unidad = new UnidadDeTrabajo<C_Animales>(new BDContext()))
                 {
 
-                unidad.genericDAL.Update(this.Convertir(animalesviewModel));
+                unidad.genericDAL.Update(animales);
                 unidad.Complete();
 
                 }
 
                return RedirectToAction("Index");
-            
-
-           
+             
        }
 
         public ActionResult Details(int id)
@@ -206,59 +222,65 @@ namespace FrontEnd.Controllers
 
             using (UnidadDeTrabajo<C_Animales> unidad = new UnidadDeTrabajo<C_Animales>(new BDContext()))
             {
+                animales = unidad.genericDAL.Get(id); 
+            }
+
+            C_AnimalesViewModel animal = this.Convertir(animales);
+
+            using (UnidadDeTrabajo<C_Temperamentos> unidad = new UnidadDeTrabajo<C_Temperamentos>(new BDContext()))
+            {
+                animal.C_Temperamentos = unidad.genericDAL.Get(animal.IdTemperamento);
+            }
+
+            using (UnidadDeTrabajo<C_Tamanos> unidad = new UnidadDeTrabajo<C_Tamanos>(new BDContext()))
+            {
+                animal.C_Tamanos = unidad.genericDAL.Get(animal.IdTamano);
+            }
+
+            return View(animal);
+        }
+
+
+
+        public ActionResult Delete(int id)
+        {
+            C_Animales animales;
+
+            using (UnidadDeTrabajo<C_Animales> unidad = new UnidadDeTrabajo<C_Animales>(new BDContext()))
+            {
                 animales = unidad.genericDAL.Get(id);
-
             }
 
-            return View(this.Convertir(animales));
+            C_AnimalesViewModel animal = this.Convertir(animales);
+
+            using (UnidadDeTrabajo<C_Temperamentos> unidad = new UnidadDeTrabajo<C_Temperamentos>(new BDContext()))
+            {
+                animal.C_Temperamentos = unidad.genericDAL.Get(animal.IdTemperamento);
+            }
+
+            using (UnidadDeTrabajo<C_Tamanos> unidad = new UnidadDeTrabajo<C_Tamanos>(new BDContext()))
+            {
+                animal.C_Tamanos = unidad.genericDAL.Get(animal.IdTamano);
+            }
+
+            return View(animal);
         }
 
 
-
-        public async Task<ActionResult> Delete(int? id)
+        [HttpPost]
+        public ActionResult Delete(C_AnimalesViewModel animalView)
         {
-
-            if (id == null)
+            using (UnidadDeTrabajo<C_Animales> unidad = new UnidadDeTrabajo<C_Animales>(new BDContext()))
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                unidad.genericDAL.Remove(this.Convertir(animalView));
+                unidad.Complete();
             }
-            C_Animales animales = await db.C_Animales.FindAsync(id);
-            if (animales == null)
-            {
-                return HttpNotFound();
-            }
-            return View(this.Convertir(animales));
 
-            //C_Animales animales;
-            //using (UnidadDeTrabajo<C_Animales> unidad = new UnidadDeTrabajo<C_Animales>(new BDContext()))
-            //{
-            //    animales= unidad.genericDAL.Get(id);
-
-            //}
-        }
-
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-
-        public async Task<ActionResult> DeleteConfirmed(int id)
-        {
-            C_Animales animales = await db.C_Animales.FindAsync(id);
-            db.C_Animales.Remove(animales);
-            await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 
 
-        //public ActionResult Delete(C_AnimalesViewModel animalesViewModel)
-        //{
-        //    using (UnidadDeTrabajo<C_Animales> unidad = new UnidadDeTrabajo<C_Animales>(new BDContext()))
-        //    {
-        //        unidad.genericDAL.Remove(this.Convertir(animalesViewModel));
-        //        unidad.Complete();
-        //    }
 
-        //    return RedirectToAction("Index");
-        //}
 
     }
 

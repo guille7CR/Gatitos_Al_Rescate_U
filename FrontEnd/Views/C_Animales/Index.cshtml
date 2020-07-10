@@ -1,19 +1,18 @@
 ﻿@model IEnumerable<FrontEnd.Models.C_AnimalesViewModel>
 
 @{
-
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
 <div style="margin-top: 12%; margin-left: 10%; margin-right: 10%">
 
-    <h1 style="text-align: center">Listado de Animales</h1>
-    <p>
-        @Html.ActionLink("Crear nuevo", "Create")
-    </p><br />
 
+    <h1 style="text-align: center">Listado de Animales</h1>
+
+    <p>
+        @Html.ActionLink("Crear Nuevo", "Create")
+    </p>
     <table class="table">
         <tr>
             <th>
@@ -28,6 +27,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.sexo)
             </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.fechaNacimiento)
             </th>
@@ -37,60 +37,63 @@
             <th>
                 @Html.DisplayNameFor(model => model.padecimientos)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ImagenURL)
-            </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.IdTamano)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.IdTemperamento)
             </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.ImagenURL)
+            </th>
             <th></th>
         </tr>
 
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.nombre)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.especie)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.raza)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.sexo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.fechaNacimiento)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.otrasSenas)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.padecimientos)
-                </td>
-                <td>
-                    <img src="~/Cargas/@Html.DisplayFor(modelItem => item.ImagenURL)" style="width: 150px; border-style:solid;border-color:black; border-radius:5px" />
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.C_Tamanos.tamanos)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.C_Temperamentos.temperamento)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.IdAnimal }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.IdAnimal }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.IdAnimal })
-                </td>
-            </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.especie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.raza)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sexo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaNacimiento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.otrasSenas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.padecimientos)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.C_Tamanos.tamanos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.C_Temperamentos.temperamento)
+        </td>
+
+        <td>
+            <img src="~/Cargas/@Html.DisplayFor(modelItem => item.ImagenURL)" style="width: 150px; border-style:solid;border-color:black; border-radius:5px" />
+        </td>
+
+        <td>
+            @Html.ActionLink("Edita", "Edit", new { id = item.IdAnimal }) |
+            @Html.ActionLink("Detalle", "Details", new { id = item.IdAnimal }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.IdAnimal })
+        </td>
+    </tr>
         }
-
-
 
     </table>
 
@@ -98,4 +101,3 @@
 <br />
 <br />
 <br />
-

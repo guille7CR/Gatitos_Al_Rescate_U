@@ -133,8 +133,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\C_AnimalesViewModel.cs" />
-    <Compile Include="Models\C_TamanosViewModel.cs" />
-    <Compile Include="Models\C_TemperamentosViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -192,13 +190,13 @@
     <None Include="packages.config" />
     <Content Include="Views\Shared\_Navigation.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
-    <Content Include="Views\C_Animales\Create.cshtml" />
-    <Content Include="Views\C_Animales\Edit.cshtml" />
-    <Content Include="Views\C_Animales\Delete.cshtml" />
-    <Content Include="Views\C_Animales\Details.cshtml" />
-    <Content Include="Views\C_Animales\Index.cshtml" />
     <Content Include="Views\Home\History.cshtml" />
     <Content Include="Views\EnviaCorreo\EnviarCorreo.cshtml" />
+    <Content Include="Views\C_Animales\Index.cshtml" />
+    <Content Include="Views\C_Animales\Create.cshtml" />
+    <Content Include="Views\C_Animales\Edit.cshtml" />
+    <Content Include="Views\C_Animales\Details.cshtml" />
+    <Content Include="Views\C_Animales\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BackEnd\BackEnd.csproj">

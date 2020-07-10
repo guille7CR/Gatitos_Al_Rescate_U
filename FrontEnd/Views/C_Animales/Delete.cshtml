@@ -5,219 +5,115 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div style="margin-top: 12%; margin-left: 10%; margin-right: 10%">
 
-    <h1 style="text-align: center">Eliminar Animal</h1>
-    <br/><br/>
+    <div style="margin-top: 12%; margin-left: 10%; margin-right: 10%">
+        <h1>Eliminar Animal</h1>
+        <br /><br />
 
-    <h3>Esta seguro de eliminar este registro?</h3><br />
+        <h3>Esta seguro de eliminar este registro?</h3>
 
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.C_Tamanos.tamanos)
-        </dt>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.nombre)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.C_Tamanos.tamanos)
-        </dd>
-        <br>
+            <dd>
+                @Html.DisplayFor(model => model.nombre)
+            </dd>
+            <br>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.C_Temperamentos.temperamento)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.IdTamano)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.C_Temperamentos.temperamento)
-        </dd>
-        <br>
+            <dd>
+                @Html.DisplayFor(model => model.C_Tamanos.tamanos)
+            </dd>
+            <br>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.nombre)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.IdTemperamento)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.nombre)
-        </dd>
-        <br>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.especie)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.especie)
-        </dd>
-        <br>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.raza)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.raza)
-        </dd>
-        <br>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.sexo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.sexo)
-        </dd>
-        <br>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.fechaNacimiento)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.fechaNacimiento)
-        </dd>
-        <br>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.otrasSenas)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.otrasSenas)
-        </dd>
-        <br>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.padecimientos)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.padecimientos)
-        </dd>
-        <br>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ImagenURL)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ImagenURL)
-        </dd>
-        <br>
-
-    </dl>
-
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  &nbsp;&nbsp; <input type="submit" value="Delete" class="btn btn-danger" />  &nbsp;|&nbsp;
-            @Html.ActionLink("Regresar a la lista", "Index")
-        </div>
-    }
-
-</div>
+            <dd>
+                @Html.DisplayFor(model => model.C_Temperamentos.temperamento)
+            </dd>
+            <br>
 
 
-    @*<h2>Eliminar Animal</h2><br />
+            <dt>
+                @Html.DisplayNameFor(model => model.especie)
+            </dt>
 
-        <h3>Esta seguro de eliminar este registro?</h3><br />
-        <div>
+            <dd>
+                @Html.DisplayFor(model => model.especie)
+            </dd>
+            <br>
 
-            <hr />
-            <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.raza)
+            </dt>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.C_Tamanos.tamanos)
-                </dt>
+            <dd>
+                @Html.DisplayFor(model => model.raza)
+            </dd>
+            <br>
 
-                <dd>
-                    @Html.DisplayFor(model => model.C_Tamanos.tamanos)
-                </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.sexo)
+            </dt>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.C_Temperamentos.temperamento)
-                </dt>
+            <dd>
+                @Html.DisplayFor(model => model.sexo)
+            </dd>
+            <br>
 
-                <dd>
-                    @Html.DisplayFor(model => model.C_Temperamentos.temperamento)
-                </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.fechaNacimiento)
+            </dt>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.nombre)
-                </dt>
+            <dd>
+                @Html.DisplayFor(model => model.fechaNacimiento)
+            </dd>
+            <br />
 
-                <dd>
-                    @Html.DisplayFor(model => model.nombre)
-                </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.otrasSenas)
+            </dt>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.especie)
-                </dt>
+            <dd>
+                @Html.DisplayFor(model => model.otrasSenas)
+            </dd>
+            <br>
 
-                <dd>
-                    @Html.DisplayFor(model => model.especie)
-                </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.padecimientos)
+            </dt>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.raza)
-                </dt>
+            <dd>
+                @Html.DisplayFor(model => model.padecimientos)
+            </dd>
+            <br>
 
-                <dd>
-                    @Html.DisplayFor(model => model.raza)
-                </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ImagenURL)
+            </dt>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.sexo)
-                </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ImagenURL)
+            </dd>
+            <br>
 
-                <dd>
-                    @Html.DisplayFor(model => model.sexo)
-                </dd>
+        </dl>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.fechaNacimiento)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.fechaNacimiento)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.otrasSenas)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.otrasSenas)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.padecimientos)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.padecimientos)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.ImagenURL)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.ImagenURL)
-                </dd>
-
-
-
-            </dl>
-
-            @using (Html.BeginForm())
-            {
-                @Html.AntiForgeryToken()
-                @Html.HiddenFor(model => model.IdAnimal)
-                <div class="form-actions no-color">
-                    <input type="submit" value="Delete" class="btn btn-default" /> |
-                    @Html.ActionLink("Regresar a la lista", "Index")
-                </div>
-            }
-        </div>*@
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(model => model.IdAnimal)
+            <div class="form-actions no-color">
+                &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  &nbsp;&nbsp; <input type="submit" value="Delete" class="btn btn-danger" />  &nbsp;|&nbsp;
+                @Html.ActionLink("Regresar a la lista", "Index")
+            </div>
+        }
+    </div>
