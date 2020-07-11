@@ -74,11 +74,12 @@
     </table>
 </div>
 
-<div style="padding:10px; border:1px solid black">
-    <div> <a href="@Url.Action("Report", new {id="PDF"})">Descargar PDF</a></div>
-    <div> <a href="@Url.Action("Report", new {id="Excel"})">Descargar Exce</a></div>
-    <div> <a href="@Url.Action("Report", new {id="Word"})">Descargar Word</a></div>
-    <div> <a href="@Url.Action("Report", new {id="Image"})">Descargar Imagen</a> </div>
+<div style="padding:10px; text-align:center">
+    <a style="font-weight:bold">Descargar reporte</a><br />
+    <a href="@Url.Action("Report", new {id="PDF"})">Descargar PDF |</a>
+    <a href="@Url.Action("Report", new {id="Excel"})">Descargar Excel |</a>
+    <a href="@Url.Action("Report", new {id="Word"})">Descargar Word |</a>
+    <a href="@Url.Action("Report", new {id="Image"})">Descargar Imagen</a>
 </div>
 
 <br />
