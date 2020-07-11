@@ -33,9 +33,23 @@
 
 </nav>
 
+@* CODIGO DEL CHATBOT PARA INTEGRAR *@
+
 <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
 <df-messenger chat-icon="55896542-ea1a-468e-8465-20dfe858e38f_x.png"
               intent="WELCOME"
               chat-title="Gatitos"
               agent-id="29eacc45-1623-464b-b6e3-7ea140cde799"
               language-code="es"></df-messenger>
+
+@* ESTILOS DEL CHATBOT *@
+<style>
+    df-messenger {
+        --df-messenger-bot-message: #878fac;
+        /*--df-messenger-button-titlebar-color: #df9b56;*/
+        --df-messenger-chat-background-color: #fafafa;
+        --df-messenger-font-color: white;
+        --df-messenger-send-icon: #878fac;
+        --df-messenger-user-message: #479b3d;
+    }
+</style>
