@@ -1,31 +1,41 @@
 ﻿ <!-- Navigation-->
-<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
-    <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top" style="font-size:40px">Gatitos al Rescate</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="#page-top" style="font-size:40px">Gatitos al Rescate</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
 
-            <ul class="navbar-nav ml-auto my-2 my-lg-0">
+                <ul class="navbar-nav ml-auto my-2 my-lg-0">
+                    <li class="nav-item">@Html.ActionLink("Inicio", "Index", "Home") </li>&nbsp;&nbsp;&nbsp;&nbsp;
+                    @*<li class="nav-item">@Html.ActionLink("Adopciones", "Index", "C_Adopciones1") </li>&nbsp;&nbsp;&nbsp;
+        <li class="nav-item">@Html.ActionLink("Personas", "Index", "C_Persona1") </li>&nbsp;&nbsp;&nbsp;&nbsp;*@
+                    <li class="nav-item">@Html.ActionLink("Animales", "Index", "C_Animales") </li>&nbsp;&nbsp;&nbsp;&nbsp;
+                    @*<li class="nav-item">@Html.ActionLink("Casa Cuna", "Index", "C_CasaCuna") </li>&nbsp;&nbsp;&nbsp;&nbsp;*@
+                    <li class="nav-item">@Html.ActionLink("Reportes", "AnimalesR", "Home") </li>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <li class="nav-item">@Html.ActionLink("Mensajeria", "EnviarCorreo", "EnviaCorreo") </li>&nbsp;&nbsp;&nbsp;&nbsp;
+                </ul>
 
-                <li class="nav-item">@Html.ActionLink("Adopciones", "Index", "C_Adopciones1") </li>&nbsp;&nbsp;&nbsp;
-                <li class="nav-item">@Html.ActionLink("Personas", "Index", "C_Persona1") </li>&nbsp;&nbsp;&nbsp;&nbsp;
-                <li class="nav-item">@Html.ActionLink("Animales", "Index", "C_Animales") </li>&nbsp;&nbsp;&nbsp;&nbsp;
-                <li class="nav-item">@Html.ActionLink("Casa Cuna", "Index", "C_CasaCuna") </li>&nbsp;&nbsp;&nbsp;&nbsp;
-                <li class="nav-item">@Html.ActionLink("Envio de correo", "EnviarCorreo", "EnviaCorreo") </li>&nbsp;&nbsp;&nbsp;&nbsp;
-            </ul>
+
+                @*<ul class="navbar-nav ml-auto my-2 my-lg-0">
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#services">Misión</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio">Animales</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio">Adopciones</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio">Animales</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio">Casa Cuna</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contacto</a></li>
+                </ul>*@
 
 
-        @*<ul class="navbar-nav ml-auto my-2 my-lg-0">
-            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">Nosotros</a></li>
-            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#services">Misión</a></li>
-            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio">Animales</a></li>
-            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio">Adopciones</a></li>
-            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio">Animales</a></li>
-            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio">Casa Cuna</a></li>
-            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contacto</a></li>
-        </ul>*@
-
+            </div>
 
         </div>
-    </div>
-</nav>
+        
+    </nav>
+
+    <iframe allow="microphone;"
+            width="310"
+            height="400"
+            align="right"
+            src="https://console.dialogflow.com/api-client/demo/embedded/29eacc45-1623-464b-b6e3-7ea140cde799">
+    </iframe>

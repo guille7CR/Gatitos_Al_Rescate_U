@@ -1,0 +1,86 @@
+﻿@model IEnumerable<FrontEnd.Models.C_AnimalesViewModel>
+
+@{
+    ViewBag.Title = "AnimalesR";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="margin-top: 12%; margin-left: 10%; margin-right: 10%">
+
+    <h1>Reporte de Animales | Gatitos al Rescate</h1><br />
+
+    <table class="table">
+        <tr>
+            <th>
+                Nombre de Animal
+            </th>
+
+            <th>
+                Especie
+            </th>
+            <th>
+                Raza
+            </th>
+            <th>
+                Sexo
+            </th>
+            <th>
+                Fecha de Nacimiento
+            </th>
+            <th>
+                Otras Señas
+            </th>
+
+            <th>
+                Padecimientos
+            </th>
+            
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombre)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.especie)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.raza)
+                </td>
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.sexo)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.fechaNacimiento)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.otrasSenas)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.padecimientos)
+                </td>
+
+            </tr>
+
+        }
+    </table>
+</div>
+
+<div style="padding:10px; border:1px solid black">
+    <div> <a href="@Url.Action("Report", new {id="PDF"})">Descargar PDF</a></div>
+    <div> <a href="@Url.Action("Report", new {id="Excel"})">Descargar Exce</a></div>
+    <div> <a href="@Url.Action("Report", new {id="Word"})">Descargar Word</a></div>
+    <div> <a href="@Url.Action("Report", new {id="Image"})">Descargar Imagen</a> </div>
+</div>
+
+<br />
+<br />
+<br />
