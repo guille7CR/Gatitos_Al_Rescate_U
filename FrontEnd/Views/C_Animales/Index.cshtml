@@ -13,7 +13,16 @@
     <p>
         @Html.ActionLink("Crear Nuevo", "Create")
     </p>
-    <table class="table">
+    <div class="form-group col-sm-3">
+
+        <label>Buscar:</label><br />
+        <input type="text"   onkeyup="Search_Gridview(this, 'lista_Animales')">
+    </div>
+     <br>
+
+
+
+    <table class="table" id="lista_Animales">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.nombre)
@@ -53,51 +62,56 @@
 
         @foreach (var item in Model)
         {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.especie)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.raza)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.sexo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fechaNacimiento)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.otrasSenas)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.padecimientos)
-        </td>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.especie)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.raza)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.sexo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fechaNacimiento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.otrasSenas)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.padecimientos)
+                </td>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.C_Tamanos.tamanos)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.C_Temperamentos.temperamento)
-        </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.C_Tamanos.tamanos)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.C_Temperamentos.temperamento)
+                </td>
 
-        <td>
-            <img src="~/Cargas/@Html.DisplayFor(modelItem => item.ImagenURL)" style="width: 150px; border-style:solid;border-color:black; border-radius:5px" />
-        </td>
+                <td>
+                    <img src="~/Cargas/@Html.DisplayFor(modelItem => item.ImagenURL)" style="width: 150px; border-style:solid;border-color:black; border-radius:5px" />
+                </td>
 
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id = item.IdAnimal }) |
-            @Html.ActionLink("Detalles", "Details", new { id = item.IdAnimal }) |
-            @Html.ActionLink("Borrar", "Delete", new { id = item.IdAnimal })
-        </td>
-    </tr>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.IdAnimal }) |
+                    @Html.ActionLink("Detalles", "Details", new { id = item.IdAnimal }) |
+                    @Html.ActionLink("Borrar", "Delete", new { id = item.IdAnimal })
+                </td>
+            </tr>
         }
 
     </table>
 
 </div>
+
+@* Script para el search del Index que apunta al archivo de js *@
+<script src="~/Scripts/Search.js"></script>
+
+
 <br />
 <br />
 <br />
