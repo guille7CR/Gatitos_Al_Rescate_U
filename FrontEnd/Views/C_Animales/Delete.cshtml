@@ -14,7 +14,7 @@
 
         <hr />
         <dl class="dl-horizontal">
-            <dt>
+            <dt style="font-weight:bold">
                 @Html.DisplayNameFor(model => model.nombre)
             </dt>
 
@@ -23,7 +23,7 @@
             </dd>
             <br>
 
-            <dt>
+            <dt style="font-weight:bold">
                 @Html.DisplayNameFor(model => model.IdTamano)
             </dt>
 
@@ -32,7 +32,7 @@
             </dd>
             <br>
 
-            <dt>
+            <dt style="font-weight:bold">
                 @Html.DisplayNameFor(model => model.IdTemperamento)
             </dt>
 
@@ -42,7 +42,7 @@
             <br>
 
 
-            <dt>
+            <dt style="font-weight:bold">
                 @Html.DisplayNameFor(model => model.especie)
             </dt>
 
@@ -51,7 +51,7 @@
             </dd>
             <br>
 
-            <dt>
+            <dt style="font-weight:bold">
                 @Html.DisplayNameFor(model => model.raza)
             </dt>
 
@@ -60,7 +60,7 @@
             </dd>
             <br>
 
-            <dt>
+            <dt style="font-weight:bold">
                 @Html.DisplayNameFor(model => model.sexo)
             </dt>
 
@@ -69,7 +69,7 @@
             </dd>
             <br>
 
-            <dt>
+            <dt style="font-weight:bold">
                 @Html.DisplayNameFor(model => model.fechaNacimiento)
             </dt>
 
@@ -78,7 +78,7 @@
             </dd>
             <br />
 
-            <dt>
+            <dt style="font-weight:bold">
                 @Html.DisplayNameFor(model => model.otrasSenas)
             </dt>
 
@@ -87,7 +87,7 @@
             </dd>
             <br>
 
-            <dt>
+            <dt style="font-weight:bold">
                 @Html.DisplayNameFor(model => model.padecimientos)
             </dt>
 
@@ -96,7 +96,7 @@
             </dd>
             <br>
 
-            <dt>
+            <dt style="font-weight:bold">
                 @Html.DisplayNameFor(model => model.ImagenURL)
             </dt>
 
@@ -112,8 +112,13 @@
             @Html.AntiForgeryToken()
             @Html.HiddenFor(model => model.IdAnimal)
             <div class="form-actions no-color">
-                &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  &nbsp;&nbsp; <input type="submit" value="Delete" class="btn btn-danger" />  &nbsp;|&nbsp;
-                @Html.ActionLink("Regresar a la lista", "Index")
-            </div>
+                 <input type="submit" value="Eliminar" style="border: 0;color: #fff;margin-top: 10px;border-radius: 5px;background: linear-gradient(to right, #eb3941, #f15e64, #e14e53, #e2373f);box-shadow: 0 5px 15px rgba(242, 97, 103, .4);letter-spacing: 1px;padding: 12px 10px" />
+               
+            </div><br />
+
+                  <div>
+
+                     @Html.ActionLink("Regresar a la lista", "Index")
+                  </div>
         }
     </div>

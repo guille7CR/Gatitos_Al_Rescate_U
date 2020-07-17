@@ -23,35 +23,35 @@
 
 
         <div class="form-group">
-            <label class="control-label col-md-2">De :</label>
+            <label class="control-label col-md-2" style="font-weight:bold">De :</label>
             <div class="col-md-6">
                 <input class="form-control" type="email" name="de" placeholder="Correo origen" />
             </div>
         </div>
 
         <div class="form-group">
-            <label class="control-label col-md-2">Contraseña :</label>
+            <label class="control-label col-md-2" style="font-weight:bold">Contraseña :</label>
             <div class="col-md-6">
                 <input class="form-control" type="password" name="txtPass" placeholder="Contraseña" />
             </div>
         </div>
 
         <div class="form-group">
-            <label class="control-label col-md-2">Para :</label>
+            <label class="control-label col-md-2" style="font-weight:bold">Para :</label>
             <div class="col-md-6">
                 <input class="form-control" type="email" name="para" placeholder="Correo destino" />
             </div>
         </div>
 
         <div class="form-group">
-            <label class="control-label col-md-2">Asunto :</label>
+            <label class="control-label col-md-2" style="font-weight:bold">Asunto :</label>
             <div class="col-md-6">
                 <input class="form-control" type="text" name="asunto" placeholder="Título" />
             </div>
         </div>
 
         <div class="form-group">
-            <label class="control-label col-md-2">Mensaje :</label>
+            <label class="control-label col-md-2" style="font-weight:bold">Mensaje :</label>
             <div class="col-md-6">
                 <textarea style="width:650px;height:200px" name="mensaje" placeholder="Escriba su mensaje"></textarea>
             </div>
@@ -66,14 +66,15 @@
         </div><br />
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <button id="enviar" class="btn btn-success" type="submit">Enviar correo</button>
+            <div class="col-md-offset-2 col-md-10">&nbsp
+                <button id="enviar" style="border:0; color: #fff; margin-top:10px; border-radius:5px;background:linear-gradient(to right, #0ba360, #3cba92, #30dd8a, #2bb673); box-shadow: 0 4px 15px 0 rgba(23, 168, 108, 0.75); letter-spacing:1px; padding:12px 10px" type="submit">Enviar correo</button>
             </div>
         </div><br />
+        
+              <div>
 
-        <div>
-            @Html.ActionLink("Regresar al Inicio", "Index")
-        </div>
+                  &nbsp;&nbsp; @Html.ActionLink("Regresar al Inicio", "Index")
+              </div>
 
     </div>
     }
