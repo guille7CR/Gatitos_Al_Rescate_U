@@ -1,0 +1,163 @@
+﻿@model FrontEnd.Models.C_PersonaViewModel
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <form name="myForm" method="post" action="@Url.Action("Delete", "C_Personas")">
+
+        <div style="margin-top: 12%; margin-left: 10%; margin-right: 10%">
+            <h1>Eliminar Persona</h1>
+
+            <hr />
+            <dl class="dl-horizontal">
+
+                <dt style="font-weight:bold">
+                    @Html.DisplayNameFor(model => model.IdProvincia)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.C_Provincia.NombreProvincia)
+                </dd>
+
+                <dt style="font-weight:bold">
+                    @Html.DisplayNameFor(model => model.IdDistrito)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.C_Distrito.NombreDistrito)
+                </dd>
+
+                <dt style="font-weight:bold">
+                    @Html.DisplayNameFor(model => model.IdCanton)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.C_Canton.NombreCanton)
+                </dd>
+
+                <dt style="font-weight:bold">
+                    @Html.DisplayNameFor(model => model.nombrePersona)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.nombrePersona)
+                </dd>
+
+                <dt style="font-weight:bold">
+                    @Html.DisplayNameFor(model => model.primerApellido)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.primerApellido)
+                </dd>
+
+                <dt style="font-weight:bold">
+                    @Html.DisplayNameFor(model => model.segundoApellido)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.segundoApellido)
+                </dd>
+
+                <dt style="font-weight:bold">
+                    @Html.DisplayNameFor(model => model.cedula)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.cedula)
+                </dd>
+
+                <dt style="font-weight:bold">
+                    @Html.DisplayNameFor(model => model.correo)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.correo)
+                </dd>
+
+                <dt style="font-weight:bold">
+                    @Html.DisplayNameFor(model => model.sexo)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.sexo)
+                </dd>
+
+                <dt style="font-weight:bold">
+                    @Html.DisplayNameFor(model => model.telefono)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.telefono)
+                </dd>
+
+                <dt style="font-weight:bold">
+                    @Html.DisplayNameFor(model => model.direccion)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.direccion)
+                </dd>
+
+                <dt style="font-weight:bold">
+                    @Html.DisplayNameFor(model => model.estadoCivil)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.estadoCivil)
+                </dd>
+
+                <dt style="font-weight:bold">
+                    @Html.DisplayNameFor(model => model.fechaNacimiento)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.fechaNacimiento)
+                </dd>
+
+            </dl>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.IdPersona)
+                <div class="form-actions no-color">
+                    <input type="submit" onclick="Button1()" value="Eliminar" style="border: 0;color: #fff;margin-top: 10px;border-radius: 5px;background: linear-gradient(to right, #eb3941, #f15e64, #e14e53, #e2373f);box-shadow: 0 5px 15px rgba(242, 97, 103, .4);letter-spacing: 1px;padding: 12px 10px" />
+
+                </div><br />
+
+                <div>
+
+                    @Html.ActionLink("Regresar a la lista", "Index")
+                </div>
+            }
+        </div>
+    </form>
+
+        @* SCRIPT DE SWEETALERT PARA ELIMINAR UN REGISTRO MEDIANTE VENTANA MODAL *@
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+        <script>
+            function Button1() {
+                event.preventDefault(); // prevent form submit
+                var form = document.forms["myForm"]; // storing the form
+                swal({
+                    title: "Esta seguro de eliminar este registro?",
+                    text: "Operacion de borrado!",
+                    showCancelButton: true,
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            form.submit();
+                            swal("Eliminado", "El registro se ha borrado!", "success");
+                        } else {
+                            swal("Cancelado", "El registro se ha preservado!", "error");
+                        }
+                    });
+            }
+        </script>

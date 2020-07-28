@@ -147,6 +147,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\C_AnimalesController.cs" />
     <Compile Include="Controllers\C_CasaCunaController.cs" />
+    <Compile Include="Controllers\C_PersonaController.cs" />
     <Compile Include="Controllers\EnviaCorreoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="C_AnimalesDataSet.Designer.cs">
@@ -159,6 +160,7 @@
     </Compile>
     <Compile Include="Models\C_AnimalesViewModel.cs" />
     <Compile Include="Models\C_CasaCunaViewModel.cs" />
+    <Compile Include="Models\C_PersonaViewModel.cs" />
     <Compile Include="PAW_LOG_DBDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -219,6 +221,11 @@
     <Content Include="Views\C_CasaCuna\Details.cshtml" />
     <Content Include="Views\C_CasaCuna\Edit.cshtml" />
     <Content Include="Views\C_CasaCuna\Index.cshtml" />
+    <Content Include="Views\C_Persona\Create.cshtml" />
+    <Content Include="Views\C_Persona\Delete.cshtml" />
+    <Content Include="Views\C_Persona\Details.cshtml" />
+    <Content Include="Views\C_Persona\Edit.cshtml" />
+    <Content Include="Views\C_Persona\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

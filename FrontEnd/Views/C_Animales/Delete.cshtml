@@ -6,8 +6,127 @@
 }
 
 
+
+
+<form name="myForm" method="post" action="@Url.Action("Delete", "C_Animales")">
+
+    <div style="margin-top: 12%; margin-left: 10%; margin-right: 10%">
+        <h1>Eliminar Animal</h1>
+
+        <hr />
+        <dl class="dl-horizontal">
+            <dt style="font-weight:bold">
+                @Html.DisplayNameFor(model => model.nombre)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.nombre)
+            </dd>
+            <br>
+
+            <dt style="font-weight:bold">
+                @Html.DisplayNameFor(model => model.IdTamano)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.C_Tamanos.tamanos)
+            </dd>
+            <br>
+
+            <dt style="font-weight:bold">
+                @Html.DisplayNameFor(model => model.IdTemperamento)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.C_Temperamentos.temperamento)
+            </dd>
+            <br>
+
+
+            <dt style="font-weight:bold">
+                @Html.DisplayNameFor(model => model.especie)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.especie)
+            </dd>
+            <br>
+
+            <dt style="font-weight:bold">
+                @Html.DisplayNameFor(model => model.raza)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.raza)
+            </dd>
+            <br>
+
+            <dt style="font-weight:bold">
+                @Html.DisplayNameFor(model => model.sexo)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.sexo)
+            </dd>
+            <br>
+
+            <dt style="font-weight:bold">
+                @Html.DisplayNameFor(model => model.fechaNacimiento)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.fechaNacimiento)
+            </dd>
+            <br />
+
+            <dt style="font-weight:bold">
+                @Html.DisplayNameFor(model => model.otrasSenas)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.otrasSenas)
+            </dd>
+            <br>
+
+            <dt style="font-weight:bold">
+                @Html.DisplayNameFor(model => model.padecimientos)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.padecimientos)
+            </dd>
+            <br>
+
+            <dt style="font-weight:bold">
+                @Html.DisplayNameFor(model => model.ImagenURL)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ImagenURL)
+            </dd>
+            <br>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(model => model.IdAnimal)
+            <div class="form-actions no-color">
+                <input type="submit" onclick="Button1()" value="Eliminar" style="border: 0;color: #fff;margin-top: 10px;border-radius: 5px;background: linear-gradient(to right, #eb3941, #f15e64, #e14e53, #e2373f);box-shadow: 0 5px 15px rgba(242, 97, 103, .4);letter-spacing: 1px;padding: 12px 10px" />
+
+            </div><br />
+
+            <div>
+
+                @Html.ActionLink("Regresar a la lista", "Index")
+            </div>
+        }
+    </div>
+</form>
+
 @* SCRIPT DE SWEETALERT PARA ELIMINAR UN REGISTRO MEDIANTE VENTANA MODAL *@
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
 <script>
@@ -32,122 +151,3 @@
             });
     }
 </script>
-
-
-<form name="myForm" method="post" action="@Url.Action("Delete", "C_Animales")">
-
-<div style="margin-top: 12%; margin-left: 10%; margin-right: 10%">
-    <h1>Eliminar Animal</h1>
-    
-    <hr />
-    <dl class="dl-horizontal">
-        <dt style="font-weight:bold">
-            @Html.DisplayNameFor(model => model.nombre)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.nombre)
-        </dd>
-        <br>
-
-        <dt style="font-weight:bold">
-            @Html.DisplayNameFor(model => model.IdTamano)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.C_Tamanos.tamanos)
-        </dd>
-        <br>
-
-        <dt style="font-weight:bold">
-            @Html.DisplayNameFor(model => model.IdTemperamento)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.C_Temperamentos.temperamento)
-        </dd>
-        <br>
-
-
-        <dt style="font-weight:bold">
-            @Html.DisplayNameFor(model => model.especie)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.especie)
-        </dd>
-        <br>
-
-        <dt style="font-weight:bold">
-            @Html.DisplayNameFor(model => model.raza)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.raza)
-        </dd>
-        <br>
-
-        <dt style="font-weight:bold">
-            @Html.DisplayNameFor(model => model.sexo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.sexo)
-        </dd>
-        <br>
-
-        <dt style="font-weight:bold">
-            @Html.DisplayNameFor(model => model.fechaNacimiento)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.fechaNacimiento)
-        </dd>
-        <br />
-
-        <dt style="font-weight:bold">
-            @Html.DisplayNameFor(model => model.otrasSenas)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.otrasSenas)
-        </dd>
-        <br>
-
-        <dt style="font-weight:bold">
-            @Html.DisplayNameFor(model => model.padecimientos)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.padecimientos)
-        </dd>
-        <br>
-
-        <dt style="font-weight:bold">
-            @Html.DisplayNameFor(model => model.ImagenURL)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ImagenURL)
-        </dd>
-        <br>
-
-    </dl>
-
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-        @Html.HiddenFor(model => model.IdAnimal)
-        <div class="form-actions no-color">
-            <input type="submit" onclick="Button1()" value="Eliminar" style="border: 0;color: #fff;margin-top: 10px;border-radius: 5px;background: linear-gradient(to right, #eb3941, #f15e64, #e14e53, #e2373f);box-shadow: 0 5px 15px rgba(242, 97, 103, .4);letter-spacing: 1px;padding: 12px 10px" />
-
-        </div><br />
-
-        <div>
-
-            @Html.ActionLink("Regresar a la lista", "Index")
-        </div>
-    }
-</div>
-    </form>
-
