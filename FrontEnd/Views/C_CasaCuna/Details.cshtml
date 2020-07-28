@@ -1,0 +1,70 @@
+﻿@model FrontEnd.Models.C_CasaCunaViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+    <div style="margin-top: 12%; margin-left: 10%; margin-right: 10%">
+        <h1>Detalles Casa Cuna</h1>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt style="font-weight:bold">
+                @Html.DisplayNameFor(model => model.IdPersona)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.C_Persona.nombrePersona)
+            </dd>
+
+            <dt style="font-weight:bold">
+                @Html.DisplayNameFor(model => model.Metros)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Metros)
+            </dd>
+
+            <dt style="font-weight:bold">
+                @Html.DisplayNameFor(model => model.PropiedadCercada)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PropiedadCercada)
+            </dd>
+
+            <dt style="font-weight:bold">
+                @Html.DisplayNameFor(model => model.OtrasMascotas)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.OtrasMascotas)
+            </dd>
+
+            <dt style="font-weight:bold">
+                @Html.DisplayNameFor(model => model.CapacidadDisponible)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CapacidadDisponible)
+            </dd>
+
+            <dt style="font-weight:bold">
+                @Html.DisplayNameFor(model => model.DescripcionPropiedad)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DescripcionPropiedad)
+            </dd>
+
+        </dl>
+
+
+        <p>
+            @Html.ActionLink("Actualizar", "Edit", new { id = Model.IdCasaCuna }) |
+            @Html.ActionLink("Regresar a la lista", "Index")
+        </p>
+    </div>
+

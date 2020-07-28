@@ -1,0 +1,79 @@
+﻿@model IEnumerable<FrontEnd.Models.C_CasaCunaViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div style="margin-top: 12%; margin-left: 10%; margin-right: 10%">
+        <h2>Index</h2>
+
+        <p>
+            @Html.ActionLink("Registrar Nuevo", "Create")
+        </p>
+
+        <!-- <div class="form-group col-sm-3">
+
+         <label>Buscar:</label><br />
+         <input type="text" onkeyup="Search_Gridview(this, 'lista_casaCunas')">
+     </div>-->
+        <br>
+
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdPersona)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Metros)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PropiedadCercada)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OtrasMascotas)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CapacidadDisponible)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DescripcionPropiedad)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.C_Persona.nombrePersona)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Metros)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PropiedadCercada)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OtrasMascotas)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CapacidadDisponible)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DescripcionPropiedad)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Editar", "Edit", new { id = item.IdCasaCuna }) |
+                        @Html.ActionLink("Detalles", "Details", new { id = item.IdCasaCuna }) |
+                        @Html.ActionLink("Eliminar", "Delete", new { id = item.IdCasaCuna })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+
+
+@* Script para el search del Index que apunta al archivo de js *@
+<script src="~/Scripts/Search.js"></script>

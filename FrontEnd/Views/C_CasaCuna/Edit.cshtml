@@ -1,0 +1,89 @@
+﻿@model FrontEnd.Models.C_CasaCunaViewModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+    <form method="post" enctype="multipart/form-data">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+        <div class="form-horizontal" style="margin-top: 12%; margin-left: 10%; margin-right: 10%">
+            <h1>Actualizar Casa Cuna</h1>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.IdCasaCuna)
+
+            <div class="form-group" style="font-weight:bold">
+                @Html.LabelFor(model => model.IdPersona, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.IdPersona, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.IdPersona, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group" style="font-weight:bold">
+                @Html.LabelFor(model => model.Metros, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Metros, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Metros, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group" style="font-weight:bold">
+                @Html.LabelFor(model => model.PropiedadCercada, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.PropiedadCercada)
+                        @Html.ValidationMessageFor(model => model.PropiedadCercada, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group" style="font-weight:bold">
+                @Html.LabelFor(model => model.OtrasMascotas, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.OtrasMascotas, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.OtrasMascotas, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group" style="font-weight:bold">
+                @Html.LabelFor(model => model.CapacidadDisponible, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CapacidadDisponible, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CapacidadDisponible, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group" style="font-weight:bold">
+                @Html.LabelFor(model => model.DescripcionPropiedad, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DescripcionPropiedad, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DescripcionPropiedad, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Actualizar" style="border:0; color: #fff; margin-top:10px; border-radius:5px;background:linear-gradient(to right, #0ba360, #3cba92, #30dd8a, #2bb673); box-shadow: 0 4px 15px 0 rgba(23, 168, 108, 0.75); letter-spacing:1px; padding:12px 10px" />
+                </div>
+            </div><br />
+
+                <div>
+                    &nbsp;&nbsp; @Html.ActionLink("Regresar a la lista", "Index")
+                </div>
+           </div>
+           
+          
+            
+        }
+
+    </form>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
