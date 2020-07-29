@@ -1,0 +1,63 @@
+﻿@model IEnumerable<FrontEnd.Models.C_AdopcionesViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="margin-top: 12%; margin-left: 10%; margin-right: 10%">
+
+
+    <h1>Listado de Animales</h1>
+
+    <p>
+        @Html.ActionLink("Registrar Nuevo", "Create")
+    </p>
+    <div class="form-group col-sm-3">
+
+        <label>Buscar:</label><br />
+        <input type="text" onkeyup="Search_Gridview(this, 'lista_Adopciones')">
+    </div>
+    <br>
+
+    <table class="table" id="lista_Adopciones">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdPersona)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdAnimal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaAdopcion)
+            </th>
+            
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.C_Persona.nombrePersona)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.C_Animales.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaAdopcion)
+        </td>
+
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id = item.IdAdopcion }) |
+            @Html.ActionLink("Detalles", "Details", new { id = item.IdAdopcion }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.IdAdopcion })
+        </td>
+    </tr>
+        }
+
+    </table>
+</div>
+
+@* Script para el search del Index que apunta al archivo de js *@
+<script src="~/Scripts/Search.js"></script>

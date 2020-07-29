@@ -1,0 +1,83 @@
+﻿@model FrontEnd.Models.C_AdopcionesViewModel
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form name="myForm" method="post" action="@Url.Action("Delete", "C_Animales")">
+
+    <div style="margin-top: 12%; margin-left: 10%; margin-right: 10%">
+        <h1>Eliminar Adopción</h1>
+
+        <hr />    <dl class="dl-horizontal">
+            <dt style="font-weight:bold">
+                @Html.DisplayNameFor(model => model.IdPersona)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.C_Persona.nombrePersona)
+            </dd>
+
+            <dt style="font-weight:bold">
+                @Html.DisplayNameFor(model => model.FechaAdopcion)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FechaAdopcion)
+            </dd>
+
+            <dt style="font-weight:bold">
+                @Html.DisplayNameFor(model => model.IdAnimal)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.C_Animales.nombre)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(model => model.IdAdopcion)
+            <div class="form-actions no-color">
+                <input type="submit" onclick="Button1()" value="Eliminar" style="border: 0;color: #fff;margin-top: 10px;border-radius: 5px;background: linear-gradient(to right, #eb3941, #f15e64, #e14e53, #e2373f);box-shadow: 0 5px 15px rgba(242, 97, 103, .4);letter-spacing: 1px;padding: 12px 10px" />
+
+            </div><br />
+
+            <div>
+
+                @Html.ActionLink("Regresar a la lista", "Index")
+            </div>
+        }
+    </div>
+</form>
+
+
+@* SCRIPT DE SWEETALERT PARA ELIMINAR UN REGISTRO MEDIANTE VENTANA MODAL *@
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+<script>
+    function Button1() {
+        event.preventDefault(); // prevent form submit
+        var form = document.forms["myForm"]; // storing the form
+        swal({
+            title: "Esta seguro de eliminar este registro?",
+            text: "Operacion de borrado!",
+            showCancelButton: true,
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    form.submit();
+                    swal("Eliminado", "El registro se ha borrado!", "success");
+                } else {
+                    swal("Cancelado", "El registro se ha preservado!", "error");
+                }
+            });
+    }
+</script>
