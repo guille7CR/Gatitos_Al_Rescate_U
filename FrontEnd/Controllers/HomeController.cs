@@ -142,5 +142,12 @@ namespace FrontEnd.Controllers
 
             return View();
         }
+
+
+        public ActionResult C_ReportesIndex()
+        {
+            
+            return View();
+        }
     }
 }

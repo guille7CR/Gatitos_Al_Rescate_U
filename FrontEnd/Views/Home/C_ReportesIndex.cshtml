@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "C_ReportesIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div style="margin-top: 12%; margin-left: 10%; margin-right: 10%; text-align:center">
+
+        <h2>Reportes del Refugio Gatitos al Rescate</h2>
+        <br />
+        <br />
+
+
+        <div style="text-align: center;border-style: solid;border-color: #f4623a; border-radius:10px; margin-left:20%; margin-right:20%; box-shadow: 10px 10px 5px rgba(0,0,0,0.6)">
+            <br />
+            <br />
+
+            <p class="btn-group">
+                &nbsp; &nbsp; <img src="~/Content/assets/img/Reporte_Adopcion.png" style="max-width:60px; max-height:60px;border-radius:10px;opacity:0.8">&nbsp;&nbsp;&nbsp;
+                @Html.ActionLink("Reporte de Adopciones", "", "")
+
+
+
+            </p>
+
+
+            <br />
+
+
+            <p class="btn-group">
+                <img src="~/Content/assets/img/Reporte_Animal.png" style="max-width:60px; max-height:60px;border-radius:10px;opacity:0.8">&nbsp;&nbsp;
+                @Html.ActionLink("Reporte de Animales", "AnimalesR", "Home")
+
+
+
+            </p>
+
+            <br />
+
+            <p class="btn-group">
+                &nbsp;<img src="~/Content/assets/img/Reporte_CasaCuna.png" style="max-width:60px; max-height:60px;border-radius:10px;opacity:0.8">&nbsp;&nbsp;
+                @Html.ActionLink("Reporte de Casa Cuna", "", "")
+
+
+
+            </p>
+
+
+            <br />
+
+            <p class="btn-group">
+                <img src="~/Content/assets/img/Reporte_Persona.png" style="max-width:60px; max-height:60px;border-radius:10px;opacity:0.8">&nbsp;&nbsp;
+                @Html.ActionLink("Reporte de Personas", "", "")
+
+
+
+            </p>
+            <br />
+            <br />
+
+        </div>
+
+    </div>
+
+<br />
+<br />
+<br />

@@ -145,6 +145,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\C_AdopcionesController.cs" />
     <Compile Include="Controllers\C_AnimalesController.cs" />
     <Compile Include="Controllers\C_CasaCunaController.cs" />
     <Compile Include="Controllers\C_PersonaController.cs" />
@@ -158,6 +159,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\C_AdopcionesViewModel.cs" />
     <Compile Include="Models\C_AnimalesViewModel.cs" />
     <Compile Include="Models\C_CasaCunaViewModel.cs" />
     <Compile Include="Models\C_PersonaViewModel.cs" />
@@ -188,6 +190,11 @@
     <Content Include="Content\assets\img\portfolio\thumbnails\4.png" />
     <Content Include="Content\assets\img\portfolio\thumbnails\5.png" />
     <Content Include="Content\assets\img\portfolio\thumbnails\6.png" />
+    <Content Include="Content\assets\img\Reporte_Adopcion.png" />
+    <Content Include="Content\assets\img\Reporte_Animal.png" />
+    <Content Include="Content\assets\img\Reporte_CasaCuna.png" />
+    <Content Include="Content\assets\img\Reporte_Persona.png" />
+    <Content Include="Content\assets\img\Report_Img.png" />
     <Content Include="Content\assets\img\twitter.png" />
     <Content Include="Content\assets\img\WhatsApp.png" />
     <Content Include="Content\css\styles.css" />
@@ -226,6 +233,12 @@
     <Content Include="Views\C_Persona\Details.cshtml" />
     <Content Include="Views\C_Persona\Edit.cshtml" />
     <Content Include="Views\C_Persona\Index.cshtml" />
+    <Content Include="Views\C_Adopciones\Create.cshtml" />
+    <Content Include="Views\C_Adopciones\Delete.cshtml" />
+    <Content Include="Views\C_Adopciones\Details.cshtml" />
+    <Content Include="Views\C_Adopciones\Edit.cshtml" />
+    <Content Include="Views\C_Adopciones\Index.cshtml" />
+    <Content Include="Views\Home\C_ReportesIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
