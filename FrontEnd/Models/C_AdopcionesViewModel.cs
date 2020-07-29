@@ -26,7 +26,7 @@ namespace FrontEnd.Models
 
        
 
-        [Display(Name = "Animal")]
+        [Display(Name = "Gatito")]
         [Required(ErrorMessage = "*{0} es requerido*")]
         public int IdAnimal { get; set; }
         public IEnumerable<C_Animales> Animales { get; set; }
