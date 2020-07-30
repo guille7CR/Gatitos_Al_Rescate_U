@@ -92,8 +92,9 @@ namespace FrontEnd.Models
         [Required(ErrorMessage = "*{0} es requerido*")]
         [Display(Name = "Fecha de Nacimiento")]
         public DateTime? fechaNacimiento { get; set; }
+        //public int? Edad { get { return (DateTime.Now.Year - fechaNacimiento); } }
 
-    
+
         public  ICollection<C_Adopciones> C_Adopciones { get; set; }
         public ICollection<C_CasaCuna> C_CasaCuna { get; set; }
         

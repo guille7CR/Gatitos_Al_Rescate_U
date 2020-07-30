@@ -29,10 +29,7 @@ namespace FrontEnd.Controllers
                 telefono = personas.telefono,
                 direccion= personas.direccion,
                 estadoCivil= personas.estadoCivil,
-                fechaNacimiento= personas.fechaNacimiento,
-
-
-                
+                fechaNacimiento= personas.fechaNacimiento        
             };
             return personaViewModel;
         }

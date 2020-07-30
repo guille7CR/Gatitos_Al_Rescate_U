@@ -1,0 +1,11 @@
+﻿@using ReportViewerForMvc
+@{
+    ViewBag.Title = "Report";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div style="margin-top: 12%; margin-left: 10%; margin-right: 10%">
+        @Html.ReportViewer(
+            ViewBag.ReportViewer as Microsoft.Reporting.WebForms.ReportViewer,
+            new { scrolling = "no" })
+    </div>

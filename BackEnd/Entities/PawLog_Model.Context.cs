@@ -142,5 +142,28 @@ namespace BackEnd.Entities
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
+    
+        public virtual ObjectResult<sp_ReporteAdopciones_Result> sp_ReporteAdopciones(string idCedula)
+        {
+            var idCedulaParameter = idCedula != null ?
+                new ObjectParameter("IdCedula", idCedula) :
+                new ObjectParameter("IdCedula", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ReporteAdopciones_Result>("sp_ReporteAdopciones", idCedulaParameter);
+        }
+    
+        public virtual ObjectResult<sp_ReporteCasaCuna_Result> sp_ReporteCasaCuna(Nullable<int> idProvincias)
+        {
+            var idProvinciasParameter = idProvincias.HasValue ?
+                new ObjectParameter("IdProvincias", idProvincias) :
+                new ObjectParameter("IdProvincias", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ReporteCasaCuna_Result>("sp_ReporteCasaCuna", idProvinciasParameter);
+        }
+    
+        public virtual ObjectResult<sp_ReportePersonas_Result> sp_ReportePersonas()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ReportePersonas_Result>("sp_ReportePersonas");
+        }
     }
 }

@@ -108,6 +108,15 @@
     <Compile Include="Entities\sp_helpdiagrams_Result.cs">
       <DependentUpon>PawLog_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\sp_ReporteAdopciones_Result.cs">
+      <DependentUpon>PawLog_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\sp_ReporteCasaCuna_Result.cs">
+      <DependentUpon>PawLog_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\sp_ReportePersonas_Result.cs">
+      <DependentUpon>PawLog_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\sysdiagrams.cs">
       <DependentUpon>PawLog_Model.tt</DependentUpon>
     </Compile>

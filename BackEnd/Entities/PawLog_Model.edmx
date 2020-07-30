@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Paw_Log_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Paw_Log_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="C_Adopciones">
           <Key>
             <PropertyRef Name="IdAdopcion" />
@@ -287,6 +287,13 @@
           <Parameter Name="owner_id" Type="int" Mode="In" />
           <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="sp_ReporteAdopciones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdCedula" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_ReporteCasaCuna" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdProvincias" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_ReportePersonas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="Paw_Log_DBModelStoreContainer">
           <EntitySet Name="C_Adopciones" EntityType="Self.C_Adopciones" Schema="dbo" store:Type="Tables" />
@@ -346,8 +353,7 @@
             <End Role="C_Usuarios" EntitySet="C_Usuarios" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Paw_Log_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -712,6 +718,13 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="sp_ReporteAdopciones" ReturnType="Collection(Paw_Log_DBModel.sp_ReporteAdopciones_Result)">
+            <Parameter Name="IdCedula" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ReporteCasaCuna" ReturnType="Collection(Paw_Log_DBModel.sp_ReporteCasaCuna_Result)">
+            <Parameter Name="IdProvincias" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ReportePersonas" ReturnType="Collection(Paw_Log_DBModel.sp_ReportePersonas_Result)" />
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -723,6 +736,41 @@
           <Property Type="Int32" Name="ID" Nullable="false" />
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_ReporteAdopciones_Result">
+          <Property Type="String" Name="cedula" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="nombrePersona" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="primerApellido" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="segundoApellido" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="correo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="telefono" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="nombre" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="sexo" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="fechaNacimiento" Nullable="true" />
+          <Property Type="DateTime" Name="FechaAdopcion" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="sp_ReporteCasaCuna_Result">
+          <Property Type="String" Name="nombrePersona" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="primerApellido" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="segundoApellido" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="cedula" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="NombreProvincia" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Metros" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="PropiedadCercada" Nullable="true" />
+          <Property Type="Int32" Name="CapacidadDisponible" Nullable="true" />
+          <Property Type="Int32" Name="IdProvincia" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_ReportePersonas_Result">
+          <Property Type="String" Name="nombrePersona" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="primerApellido" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="segundoApellido" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="cedula" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="telefono" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="NombreProvincia" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="NombreCanton" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="NombreDistrito" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="direccion" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="Edad" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -886,6 +934,53 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Paw_Log_DBModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Paw_Log_DBModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="sp_ReporteAdopciones" FunctionName="Paw_Log_DBModel.Store.sp_ReporteAdopciones">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Paw_Log_DBModel.sp_ReporteAdopciones_Result">
+                <ScalarProperty Name="cedula" ColumnName="cedula" />
+                <ScalarProperty Name="nombrePersona" ColumnName="nombrePersona" />
+                <ScalarProperty Name="primerApellido" ColumnName="primerApellido" />
+                <ScalarProperty Name="segundoApellido" ColumnName="segundoApellido" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="sexo" ColumnName="sexo" />
+                <ScalarProperty Name="fechaNacimiento" ColumnName="fechaNacimiento" />
+                <ScalarProperty Name="FechaAdopcion" ColumnName="FechaAdopcion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ReporteCasaCuna" FunctionName="Paw_Log_DBModel.Store.sp_ReporteCasaCuna">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Paw_Log_DBModel.sp_ReporteCasaCuna_Result">
+                <ScalarProperty Name="nombrePersona" ColumnName="nombrePersona" />
+                <ScalarProperty Name="primerApellido" ColumnName="primerApellido" />
+                <ScalarProperty Name="segundoApellido" ColumnName="segundoApellido" />
+                <ScalarProperty Name="cedula" ColumnName="cedula" />
+                <ScalarProperty Name="NombreProvincia" ColumnName="NombreProvincia" />
+                <ScalarProperty Name="Metros" ColumnName="Metros" />
+                <ScalarProperty Name="PropiedadCercada" ColumnName="PropiedadCercada" />
+                <ScalarProperty Name="CapacidadDisponible" ColumnName="CapacidadDisponible" />
+                <ScalarProperty Name="IdProvincia" ColumnName="IdProvincia" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ReportePersonas" FunctionName="Paw_Log_DBModel.Store.sp_ReportePersonas">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Paw_Log_DBModel.sp_ReportePersonas_Result">
+                <ScalarProperty Name="nombrePersona" ColumnName="nombrePersona" />
+                <ScalarProperty Name="primerApellido" ColumnName="primerApellido" />
+                <ScalarProperty Name="segundoApellido" ColumnName="segundoApellido" />
+                <ScalarProperty Name="cedula" ColumnName="cedula" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="NombreProvincia" ColumnName="NombreProvincia" />
+                <ScalarProperty Name="NombreCanton" ColumnName="NombreCanton" />
+                <ScalarProperty Name="NombreDistrito" ColumnName="NombreDistrito" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -901,7 +996,7 @@
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
