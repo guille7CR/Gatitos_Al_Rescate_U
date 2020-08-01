@@ -165,5 +165,10 @@ namespace BackEnd.Entities
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ReportePersonas_Result>("sp_ReportePersonas");
         }
+
+        internal object sp_ReporteAdopciones(int cedula)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

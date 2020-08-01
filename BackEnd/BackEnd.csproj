@@ -73,8 +73,10 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="DAL\CasaCunaDALImpl.cs" />
+    <Compile Include="DAL\CedulaDALImpl.cs" />
     <Compile Include="DAL\GenericoDALImpl.cs" />
     <Compile Include="DAL\ICasaCunaDAL.cs" />
+    <Compile Include="DAL\ICedulaDAL.cs" />
     <Compile Include="DAL\IGenericoDAL.cs" />
     <Compile Include="DAL\UnidadDeTrabajo.cs" />
     <Compile Include="Entities\C_Adopciones.cs">

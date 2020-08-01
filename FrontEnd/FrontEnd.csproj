@@ -188,6 +188,7 @@
     <Compile Include="Models\C_AdopcionesViewModel.cs" />
     <Compile Include="Models\C_AnimalesViewModel.cs" />
     <Compile Include="Models\C_CasaCunaViewModel.cs" />
+    <Compile Include="Models\C_CedulaViewModel.cs" />
     <Compile Include="Models\C_PersonaViewModel.cs" />
     <Compile Include="Models\C_ProvinciaViewModel.cs" />
     <Compile Include="PAW_LOG_DBDataSet.Designer.cs">
@@ -300,6 +301,8 @@
     <Content Include="Views\Home\ReportePersonas.cshtml" />
     <Content Include="Views\Home\ReporteCasaCuna.cshtml" />
     <Content Include="Views\Home\ReportesCasaCuna.cshtml" />
+    <Content Include="Views\Home\ReporteAdopciones.cshtml" />
+    <Content Include="Views\Home\ReportesAdopciones.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

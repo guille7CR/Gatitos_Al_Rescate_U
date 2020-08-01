@@ -1,0 +1,45 @@
+﻿@model FrontEnd.Models.C_CedulaViewModel
+
+@{
+    ViewBag.Title = "ReporteAdopciones";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div style="margin-top: 12%; margin-left: 10%; margin-right: 10%">
+
+        <div style="margin-top: 12%; margin-left: 10%; margin-right: 10%; text-align:center">
+
+            <h2>Reporte de Adopciones por Número de Cédula</h2>
+            <br />
+            <br />
+        </div>
+
+
+        @using (Html.BeginForm("ReporteAdopciones", "Home", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4>Por favor ingrese la cédula a buscar:</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @*@Html.LabelFor(model => model.IdCedula, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.IdCedula, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.IdCedula, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Ver Reporte" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        }
+        <hr />
+        <div>
+            @Html.ActionLink("Volver", "C_ReportesIndex")
+        </div>
+    </div>
