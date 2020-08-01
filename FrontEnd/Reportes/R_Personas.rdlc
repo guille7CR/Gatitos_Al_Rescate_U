@@ -27,34 +27,34 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>1.20833in</Width>
+              <Width>0.76041in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.47222in</Width>
+              <Width>1.1493in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.46875in</Width>
+              <Width>1.34945in</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>1.33334in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1in</Width>
+              <Width>0.50471in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.375in</Width>
+              <Width>1.47917in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.59375in</Width>
+              <Width>0.98959in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.33333in</Width>
+              <Width>0.9375in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.27083in</Width>
+              <Width>0.94792in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.22917in</Width>
+              <Width>2.70834in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -737,7 +737,7 @@
         <DataSetName>sp_ReportePersonas</DataSetName>
         <Top>0.76042in</Top>
         <Height>0.5in</Height>
-        <Width>15.28472in</Width>
+        <Width>12.15972in</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <Border>
@@ -749,7 +749,7 @@
     <Height>2.0625in</Height>
     <Style />
   </Body>
-  <Width>15.28472in</Width>
+  <Width>12.15972in</Width>
   <Page>
     <PageHeader>
       <Height>1.26958in</Height>

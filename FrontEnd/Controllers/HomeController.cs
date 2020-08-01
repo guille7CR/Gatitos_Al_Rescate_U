@@ -192,5 +192,60 @@ namespace FrontEnd.Controllers
 
         }
 
+        public ActionResult ReporteCasaCuna()
+        {
+            ICasaCunaDAL casa = new CasaCunaDALImpl();
+
+
+            C_ProvinciaViewModel prov = new C_ProvinciaViewModel();
+            prov.ListaProvincia = casa.getProvincias();
+
+
+            return View(prov);
+        }
+
+
+        [HttpPost]
+        public ActionResult ReporteCasaCuna(C_ProvinciaViewModel provincia)
+        {
+
+            var reportViewer = new ReportViewer
+            {
+                ProcessingMode = ProcessingMode.Local,
+                ShowExportControls = true,
+                ShowParameterPrompts = true,
+                ShowPageNavigationControls = true,
+                ShowRefreshButton = true,
+                ShowPrintButton = true,
+                SizeToReportContent = true,
+                AsyncRendering = false,
+            };
+            string rutaReporte = "~/Reportes/R_CasaCuna.rdlc";
+            ///construir la ruta física
+            string rutaServidor = Server.MapPath(rutaReporte);
+            reportViewer.LocalReport.ReportPath = rutaServidor;
+            //reportViewer.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"Reports\ReportCategories.rdlc";
+            var infoFuenteDatos = reportViewer.LocalReport.GetDataSourceNames();
+            reportViewer.LocalReport.DataSources.Clear();
+            /**/
+            List<sp_ReporteCasaCuna_Result> datosReporte;
+            ICasaCunaDAL casacunaDAL = new CasaCunaDALImpl();
+            datosReporte = casacunaDAL.datosReporte(provincia.idProvincia);
+
+            /**/
+
+            ReportDataSource fuenteDatos = new ReportDataSource();
+            fuenteDatos.Name = infoFuenteDatos[0];
+            fuenteDatos.Value = datosReporte;
+            reportViewer.LocalReport.DataSources.Add(new ReportDataSource("sp_ReporteCasaCuna", datosReporte));
+
+            reportViewer.LocalReport.Refresh();
+            ViewBag.ReportViewer = reportViewer;
+
+
+            return View("ReportesCasaCuna");
+
+        }
+
     }
 }

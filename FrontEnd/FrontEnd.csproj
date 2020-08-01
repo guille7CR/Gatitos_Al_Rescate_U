@@ -189,6 +189,7 @@
     <Compile Include="Models\C_AnimalesViewModel.cs" />
     <Compile Include="Models\C_CasaCunaViewModel.cs" />
     <Compile Include="Models\C_PersonaViewModel.cs" />
+    <Compile Include="Models\C_ProvinciaViewModel.cs" />
     <Compile Include="PAW_LOG_DBDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -297,6 +298,8 @@
     <Content Include="Views\C_Adopciones\Index.cshtml" />
     <Content Include="Views\Home\C_ReportesIndex.cshtml" />
     <Content Include="Views\Home\ReportePersonas.cshtml" />
+    <Content Include="Views\Home\ReporteCasaCuna.cshtml" />
+    <Content Include="Views\Home\ReportesCasaCuna.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
