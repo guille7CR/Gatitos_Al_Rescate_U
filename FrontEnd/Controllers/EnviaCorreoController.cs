@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace FrontEnd.Controllers
 {
+    [Authorize(Roles = "Administrador,Consulta")]
     public class EnviaCorreoController : Controller
     {
         // GET: EnviaCorreo

@@ -5,19 +5,15 @@
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
 
-            <ul class="navbar-nav ml-auto my-2 my-lg-0">
+            @*<ul class="navbar-nav ml-auto my-2 my-lg-0">
                 <li class="nav-item">@Html.ActionLink("Inicio", "Index", "Home") </li>&nbsp;&nbsp;&nbsp;&nbsp;
                 <li class="nav-item">@Html.ActionLink("Adopciones", "Index", "C_Adopciones") </li>&nbsp;&nbsp;&nbsp;
                 <li class="nav-item">@Html.ActionLink("Personas", "Index", "C_Persona") </li>&nbsp;&nbsp;&nbsp;&nbsp;
                 <li class="nav-item">@Html.ActionLink("Animales", "Index", "C_Animales") </li>&nbsp;&nbsp;&nbsp;&nbsp;
                 <li class="nav-item">@Html.ActionLink("Casa Cuna", "Index", "C_CasaCuna") </li>&nbsp;&nbsp;&nbsp;&nbsp;
-                <li class="nav-item">@Html.ActionLink("Reportes", "C_ReportesIndex", "Home") </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                @*<li class="nav-item alert-primary">@Html.ActionLink("Salir", "LogOut", "Login") </li>&nbsp;&nbsp;&nbsp;&nbsp;*@
-
-            </ul>
-            <a href="~/Login/LogOut">
-                <img class="img-profile rounded-circle float-right" src="~/Content/assets/img/logout.png" style="width:1.5rem;">
-            </a>          
+                <li class="nav-item">@Html.ActionLink("Reportes", "C_ReportesIndex", "Home") </li>&nbsp;&nbsp;&nbsp;&nbsp;
+                
+            </ul>*@
         </div>
 
     </div>
@@ -26,7 +22,7 @@
 
 @* CODIGO DEL CHATBOT PARA INTEGRAR *@
 
-<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+@*<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
 <df-messenger chat-icon="55896542-ea1a-468e-8465-20dfe858e38f_x.png"
               intent="WELCOME"
               chat-title="Gatitos"
@@ -34,8 +30,8 @@
               language-code="es"></df-messenger>
 
 
-@* ESTILOS DEL CHATBOT *@
-<style>
+ @*ESTILOS DEL CHATBOT*@
+@*<style>
     df-messenger {
         --df-messenger-bot-message: #f4623a;
         --df-messenger-button-titlebar-color: #878fac;
@@ -46,4 +42,4 @@
         --df-messenger-user-message: #5da040;
 
     }
-</style>
+</style>*@

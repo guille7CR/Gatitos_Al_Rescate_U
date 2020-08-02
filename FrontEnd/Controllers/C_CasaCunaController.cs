@@ -10,6 +10,7 @@ using System.Xml.Serialization;
 
 namespace FrontEnd.Controllers
 {
+    [Authorize(Roles = "Administrador")]
     public class C_CasaCunaController : Controller
     {
 

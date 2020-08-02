@@ -28,6 +28,9 @@
         <AssociationConnector Association="Paw_Log_DBModel.FK_C_Persona_C_Distrito" ManuallyRouted="false" />
         <AssociationConnector Association="Paw_Log_DBModel.FK_C_Persona_C_Provincia" ManuallyRouted="false" />
         <AssociationConnector Association="Paw_Log_DBModel.FK_C_Usuarios_C_Roles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Paw_Log_DBModel.Roles" Width="1.5" PointX="12.375" PointY="1.125" />
+        <EntityTypeShape EntityType="Paw_Log_DBModel.Users" Width="1.5" PointX="14.625" PointY="0.875" />
+        <AssociationConnector Association="Paw_Log_DBModel.UsersInRoles" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

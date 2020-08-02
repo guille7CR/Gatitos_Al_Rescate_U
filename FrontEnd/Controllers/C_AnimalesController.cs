@@ -13,6 +13,7 @@ using System.Web.Mvc;
 
 namespace FrontEnd.Controllers
 {
+    [Authorize(Roles = "Administrador,Consulta")]
     public class C_AnimalesController : Controller
     {
 

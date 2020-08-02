@@ -39,6 +39,8 @@ namespace BackEnd.Entities
         public virtual DbSet<C_Temperamentos> C_Temperamentos { get; set; }
         public virtual DbSet<C_Usuarios> C_Usuarios { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<Roles> Roles { get; set; }
+        public virtual DbSet<Users> Users { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {
@@ -165,10 +167,36 @@ namespace BackEnd.Entities
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ReportePersonas_Result>("sp_ReportePersonas");
         }
-
-        internal object sp_ReporteAdopciones(int cedula)
+    
+        public virtual ObjectResult<string> sp_getRolesForUser(string userName)
         {
-            throw new NotImplementedException();
+            var userNameParameter = userName != null ?
+                new ObjectParameter("userName", userName) :
+                new ObjectParameter("userName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("sp_getRolesForUser", userNameParameter);
+        }
+    
+        public virtual ObjectResult<string> sp_getUsuariosRole(string roleName)
+        {
+            var roleNameParameter = roleName != null ?
+                new ObjectParameter("roleName", roleName) :
+                new ObjectParameter("roleName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("sp_getUsuariosRole", roleNameParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<bool>> sp_isUserInRole(string userName, string roleName)
+        {
+            var userNameParameter = userName != null ?
+                new ObjectParameter("userName", userName) :
+                new ObjectParameter("userName", typeof(string));
+    
+            var roleNameParameter = roleName != null ?
+                new ObjectParameter("roleName", roleName) :
+                new ObjectParameter("roleName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("sp_isUserInRole", userNameParameter, roleNameParameter);
         }
     }
 }

@@ -78,7 +78,9 @@
     <Compile Include="DAL\ICasaCunaDAL.cs" />
     <Compile Include="DAL\ICedulaDAL.cs" />
     <Compile Include="DAL\IGenericoDAL.cs" />
+    <Compile Include="DAL\IUserDAL.cs" />
     <Compile Include="DAL\UnidadDeTrabajo.cs" />
+    <Compile Include="DAL\UserDALImpl.cs" />
     <Compile Include="Entities\C_Adopciones.cs">
       <DependentUpon>PawLog_Model.tt</DependentUpon>
     </Compile>
@@ -127,6 +129,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PawLog_Model.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Roles.cs">
+      <DependentUpon>PawLog_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>PawLog_Model.tt</DependentUpon>
     </Compile>
@@ -143,6 +148,9 @@
       <DependentUpon>PawLog_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\sysdiagrams.cs">
+      <DependentUpon>PawLog_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Users.cs">
       <DependentUpon>PawLog_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
