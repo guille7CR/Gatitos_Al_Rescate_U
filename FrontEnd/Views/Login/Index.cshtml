@@ -8,11 +8,11 @@
             <div id="login-div">
 
                 @using (Html.BeginForm("Autherize", "Login", FormMethod.Post))
-                {
-                <table>
+              {
+                  <table>
                     <tr>
                         <td></td>
-                        <td style="text-decoration:underline;color:#f4623a">Ingreso a la Aplicación</td>
+                        <td style="text-decoration:underline;color:#f4623a; font-size:medium">Ingreso a la Aplicación</td>
 
                     </tr>
                     <tr>
@@ -29,10 +29,11 @@
                     <tr><td></td></tr>
                     <tr>
                     <tr>
-                        <td style="color: #f4623a">
+                        <td style="color: #f4623a; font-size:medium">
                             @Html.LabelFor(model => model.UserName)
-                        </td>
-                        <td style="border-radius:5px">
+                            &nbsp;
+                        </td>&nbsp;&nbsp;
+                        <td width="200">
                             @Html.EditorFor(model => model.UserName)
                         </td>
                     </tr>
@@ -42,8 +43,25 @@
                     </tr>
 
                     <tr>
-                        <td style="color: #f4623a">@Html.LabelFor(model => model.Password)</td>
-                        <td style="border-radius:5px">@Html.EditorFor(model => model.Password)</td>
+                    <tr>
+                    <tr><td></td></tr>
+                    <tr><td></td></tr>
+                    <tr><td></td></tr>
+                    <tr>
+                    <tr>
+                    <tr>
+                    <tr>
+                    <tr><td></td></tr>
+                    <tr><td></td></tr>
+                    <tr><td></td></tr>
+                    <tr>
+                    <tr>
+
+
+                    <tr>
+                        <td style="color: #f4623a; font-size:medium">@Html.LabelFor(model => model.Password)&nbsp;</td>&nbsp;&nbsp;
+
+                        <td width="200">@Html.EditorFor(model => model.Password)</td>
                     </tr>
                     <tr>
                         <td></td>

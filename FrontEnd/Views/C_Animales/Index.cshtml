@@ -3,22 +3,30 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 }
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
 <div style="margin-top: 12%; margin-left: 10%; margin-right: 10%">
 
 
     <h1>Listado de Animales</h1>
-
+    <br />
     <p>
-        @Html.ActionLink("Registrar Nuevo", "Create")
+        @Html.ActionLink("Registrar Animal", "Create")&nbsp;&nbsp;
+        <i class="fas fa-plus-circle" style="font-size:25px; color:#f4623a"></i>
     </p>
+    <br />
     <div class="form-group col-sm-3">
 
         <label>Buscar:</label><br />
-        <input type="text"   onkeyup="Search_Gridview(this, 'lista_Animales')">
+        <input type="text" onkeyup="Search_Gridview(this, 'lista_Animales')">
     </div>
-     <br>
+    <br>
 
 
 
@@ -56,6 +64,10 @@
 
             <th>
                 @Html.DisplayNameFor(model => model.ImagenURL)
+            </th>
+
+            <th style="width:120px">
+                <p>Acciones&nbsp;&nbsp;</p>
             </th>
             <th></th>
         </tr>
@@ -96,10 +108,22 @@
                     <img src="~/Cargas/@Html.DisplayFor(modelItem => item.ImagenURL)" style="width: 150px;border-style: solid;border-color: black;border-radius: 5px;box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75)" />
                 </td>
 
-                <td>
-                    @Html.ActionLink("Editar", "Edit", new { id = item.IdAnimal }) |
-                    @Html.ActionLink("Detalles", "Details", new { id = item.IdAnimal }) |
-                    @Html.ActionLink("Borrar", "Delete", new { id = item.IdAnimal })
+                <td style="width:120px">
+                    <a href="@Url.Action("Edit", "C_Animales", new {id=item.IdAnimal})">
+
+                        <i class="fas fa-edit" style="font-size:18px"></i>
+                    </a>&nbsp;
+
+                    <a href="@Url.Action("Details", "C_Animales", new {id=item.IdAnimal})">
+
+                        <i class="fas fa-eye" style="font-size:18px"></i>
+                    </a>&nbsp;
+
+                    <a href="@Url.Action("Delete", "C_Animales", new {id=item.IdAnimal})">
+
+                        <i class="fas fa-trash-alt" style="font-size:18px"></i>
+                    </a>&nbsp;
+
                 </td>
             </tr>
         }
