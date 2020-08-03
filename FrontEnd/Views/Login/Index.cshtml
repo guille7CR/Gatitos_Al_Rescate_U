@@ -2,59 +2,78 @@
 @{
     Layout = "~/Views/Shared/_LayoutLogin.cshtml";
 }
+    <header class="masthead">
 
-    <div style="margin-top: 12%; margin-left: 10%; margin-right: 10%">
-        <div id="login-div">
-            @using (Html.BeginForm("Autherize", "Login", FormMethod.Post))
-            {
+        <div style="margin-top: 12%; margin-left: 10%; margin-right: 10%">
+            <div id="login-div">
+
+                @using (Html.BeginForm("Autherize", "Login", FormMethod.Post))
+                {
                 <table>
                     <tr>
                         <td></td>
-                        <td style="text-decoration:underline">Ingreso a la Aplicación</td>
+                        <td style="text-decoration:underline;color:#f4623a">Ingreso a la Aplicación</td>
+
                     </tr>
                     <tr>
-                        <td>
+                    <tr>
+                    <tr><td></td></tr>
+                    <tr><td></td></tr>
+                    <tr><td></td></tr>
+                    <tr>
+                    <tr>
+                    <tr>
+                    <tr>
+                    <tr><td></td></tr>
+                    <tr><td></td></tr>
+                    <tr><td></td></tr>
+                    <tr>
+                    <tr>
+                        <td style="color: #f4623a">
                             @Html.LabelFor(model => model.UserName)
                         </td>
-                        <td>
+                        <td style="border-radius:5px">
                             @Html.EditorFor(model => model.UserName)
                         </td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td>@Html.ValidationMessageFor(model => model.UserName)</td>
+                        <td style="color: #dee2e6">@Html.ValidationMessageFor(model => model.UserName)</td>
                     </tr>
 
                     <tr>
-                        <td>@Html.LabelFor(model => model.Password)</td>
-                        <td>@Html.EditorFor(model => model.Password)</td>
+                        <td style="color: #f4623a">@Html.LabelFor(model => model.Password)</td>
+                        <td style="border-radius:5px">@Html.EditorFor(model => model.Password)</td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td>@Html.ValidationMessageFor(model => model.Password)</td>
+                        <td style="color: #dee2e6">@Html.ValidationMessageFor(model => model.Password)</td>
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <label class="field-validation-error">@Html.DisplayFor(model => model.LoginErrorMessage)</label>
+                            <label class="field-validation-error" style="color: #dee2e6">@Html.DisplayFor(model => model.LoginErrorMessage)</label>
                         </td>
                     </tr>
                     <tr>
                         <td></td>
                         <td>
-                            <input type="submit" name="name" value="Login" class="btn btn-primary"/>
-                            <input type="reset" name="name" value="Borrar" class="btn btn-outline-secondary"/>
+                            <input type="submit" name="name" value="Login" class="btn btn-primary" />
+                            <input type="reset" name="name" value="Borrar" class="btn btn-outline-secondary" style="color:#dee2e6" />
                         </td>
                     </tr>
                 </table>
-            }
+                
+                  }
 
-        </div>
+            </div>
 
-        
-        
-            
+
+
+
             @*<script src="~/Scripts/jquery-1.10.2.min.js"></script>
             <script src="~/Scripts/jquery.validate.min.js"></script>
             <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
-    </div>
+        </div>
 
+    </header>
+    <br /><br /><br /><br /><br />

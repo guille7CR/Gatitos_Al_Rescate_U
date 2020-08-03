@@ -315,6 +315,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\fontawesome\" />
+    <Folder Include="Content\fonts\" />
     <Folder Include="Correos\" />
   </ItemGroup>
   <ItemGroup>
