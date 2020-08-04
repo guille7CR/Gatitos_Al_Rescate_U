@@ -4,20 +4,35 @@
         <a class="navbar-brand js-scroll-trigger" href="#page-top" style="font-size:40px">Gatitos al Rescate</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
             <ul class="navbar-nav ml-auto my-2 my-lg-0">
                 <li class="nav-item">@Html.ActionLink("Inicio", "Index", "Home") </li>&nbsp;&nbsp;&nbsp;&nbsp;
-                <li class="nav-item">@Html.ActionLink("Adopciones", "Index", "C_Adopciones") </li>&nbsp;&nbsp;&nbsp;
-                <li class="nav-item">@Html.ActionLink("Personas", "Index", "C_Persona") </li>&nbsp;&nbsp;&nbsp;&nbsp;
+                <li class="nav-item">@Html.ActionLink("Adopciones", "Index", "C_Adopciones") </li>&nbsp;&nbsp;&nbsp;&nbsp;
                 <li class="nav-item">@Html.ActionLink("Animales", "Index", "C_Animales") </li>&nbsp;&nbsp;&nbsp;&nbsp;
-                <li class="nav-item">@Html.ActionLink("Casa Cuna", "Index", "C_CasaCuna") </li>&nbsp;&nbsp;&nbsp;&nbsp;
-                <li class="nav-item">@Html.ActionLink("Reportes", "C_ReportesIndex", "Home") </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                @*<li class="nav-item alert-primary">@Html.ActionLink("Salir", "LogOut", "Login") </li>&nbsp;&nbsp;&nbsp;&nbsp;*@
+                <li class="nav-item">@Html.ActionLink("Reportes", "C_ReportesIndex", "Home") </li>&nbsp;&nbsp;&nbsp;&nbsp;
 
+                @if (User.IsInRole("Administrador"))
+                {
+                    <li class="nav-item">@Html.ActionLink("Personas", "Index", "C_Persona") </li>
+                    @:&nbsp;&nbsp;
+                    <li class="nav-item col-sm-4 ">@Html.ActionLink("Casa Cuna", "Index", "C_CasaCuna") </li>
+
+
+                }
             </ul>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+
+            <p class="nav-item col-md-5" style="color:#808080;">Usuario | @Session["UserName"]</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="~/Login/LogOut">
                 <img class="img-profile rounded-circle float-right" src="~/Content/assets/img/logout.png" style="width:1.5rem;">
-            </a>          
+            </a>
+
+
+
+
         </div>
 
     </div>
