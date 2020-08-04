@@ -357,6 +357,7 @@
     <Content Include="Content\assets\img\Report_Img.png" />
     <Content Include="Content\assets\img\twitter.png" />
     <Content Include="Content\assets\img\WhatsApp.png" />
+    <Content Include="Content\assets\img\Whatsapp1.png" />
     <Content Include="Content\css\styles.css" />
     <Content Include="Content\assets\img\favicon.ico" />
     <Content Include="Content\js\scripts.js" />
