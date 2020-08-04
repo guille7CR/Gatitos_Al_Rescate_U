@@ -3,76 +3,98 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" >
+
 }
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <div style="margin-top: 12%; margin-left: 10%; margin-right: 10%">
-        <h2>Index</h2>
+<div style="margin-top: 12%; margin-left: 10%; margin-right: 10%">
+    <h1>Listado Casas Cuna</h1>
 
-        <p>
-            @Html.ActionLink("Registrar Nuevo", "Create")
-        </p>
+    <p>
+        @Html.ActionLink("Registrar Nuevo", "Create")&nbsp;&nbsp;
+        <i class="fas fa-plus-circle" style="font-size:25px; color:#f4623a"></i>
+    </p>
 
-        <!-- <div class="form-group col-sm-3">
+     <div class="form-group col-sm-3">
 
-         <label>Buscar:</label><br />
-         <input type="text" onkeyup="Search_Gridview(this, 'lista_casaCunas')">
-     </div>-->
-        <br>
-
-        <table class="table">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.IdPersona)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Metros)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.PropiedadCercada)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.OtrasMascotas)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CapacidadDisponible)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.DescripcionPropiedad)
-                </th>
-                <th></th>
-            </tr>
-
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.C_Persona.nombrePersona)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Metros)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PropiedadCercada)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.OtrasMascotas)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CapacidadDisponible)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DescripcionPropiedad)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Editar", "Edit", new { id = item.IdCasaCuna }) |
-                        @Html.ActionLink("Detalles", "Details", new { id = item.IdCasaCuna }) |
-                        @Html.ActionLink("Eliminar", "Delete", new { id = item.IdCasaCuna })
-                    </td>
-                </tr>
-            }
-
-        </table>
+        <label>Buscar:</label><br />
+        <input type="text" onkeyup="Search_Gridview(this, 'lista_casaCunas')">
     </div>
+    <br>
+
+    <table class="table table-hover" id="lista_casaCunas">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdPersona)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Metros)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PropiedadCercada)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OtrasMascotas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CapacidadDisponible)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DescripcionPropiedad)
+            </th>
+            <th style="width:120px">
+                <p>Acciones&nbsp;&nbsp;</p>
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.C_Persona.nombrePersona)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Metros)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PropiedadCercada)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OtrasMascotas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CapacidadDisponible)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DescripcionPropiedad)
+        </td>
+
+        <td style="width:120px">
+            <a href="@Url.Action("Edit", "C_CasaCuna", new {id=item.IdCasaCuna})">
+
+                <i class="fas fa-edit" style="font-size:18px"></i>
+            </a>&nbsp;
+
+            <a href="@Url.Action("Details", "C_CasaCuna", new {id=item.IdCasaCuna})">
+
+                <i class="fas fa-eye" style="font-size:18px"></i>
+            </a>&nbsp;
+
+            <a href="@Url.Action("Delete", "C_CasaCuna", new {id=item.IdCasaCuna})">
+
+                <i class="fas fa-trash-alt" style="font-size:18px"></i>
+            </a>&nbsp;
+
+        </td>
+
+
+    </tr>
+        }
+
+    </table>
+</div>
 
 
 @* Script para el search del Index que apunta al archivo de js *@

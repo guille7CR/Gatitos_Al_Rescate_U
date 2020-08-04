@@ -3,95 +3,118 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 }
 
-    <div style="margin-top: 12%; margin-left: 10%; margin-right: 10%">
 
-        <h1>Listado de Personas</h1>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-        <p>
-            @Html.ActionLink("Registrar Nuevo", "Create")
-        </p>
-         <div class="form-group col-sm-3">
 
-         <label>Buscar:</label><br />
-         <input type="text" onkeyup="Search_Gridview(this, 'lista_Personas')">
-     </div>
-        <br>
-        <table class="table" id="lista_Personas">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.IdProvincia)
-                </th>
-                
-                <th>
-                    @Html.DisplayNameFor(model => model.nombrePersona)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.primerApellido)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.segundoApellido)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.cedula)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.correo)
-                </th>
-                
-                <th>
-                    @Html.DisplayNameFor(model => model.telefono)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.fechaNacimiento)
-                </th>
-                <th></th>
-            </tr>
+<div style="margin-top: 12%; margin-left: 10%; margin-right: 10%">
 
-            @foreach (var item in Model)
-            {
-        <tr>
+    <h1>Listado de Personas</h1>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.C_Provincia.NombreProvincia)
-            </td>
+    <p>
+        @Html.ActionLink("Registrar Nuevo", "Create")&nbsp;&nbsp;
+        <i class="fas fa-plus-circle" style="font-size:25px; color:#f4623a"></i>
+    </p>
+    <div class="form-group col-sm-3">
 
-            <td>
-                @Html.DisplayFor(modelItem => item.nombrePersona)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.primerApellido)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.segundoApellido)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.cedula)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.correo)
-            </td>          
-            <td>
-                @Html.DisplayFor(modelItem => item.telefono)
-            </td>            
-            <td>
-                @*@{
-            DateTime actual = DateTime.Now;
-            DateTime? fecha = item.fechaNacimiento;
-            var edad = actual - fecha;
-        }
-        @Html.DisplayFor(modelItem => @edad)*@
-                @Html.DisplayFor(modelItem => item.fechaNacimiento)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.IdPersona }) |
-                @Html.ActionLink("Detalles", "Details", new { id = item.IdPersona }) |
-                @Html.ActionLink("Eliminar", "Delete", new { id = item.IdPersona })
-            </td>
-        </tr>
-            }
-
-        </table>
+        <label>Buscar:</label><br />
+        <input type="text" onkeyup="Search_Gridview(this, 'lista_Personas')">
     </div>
-    <script src="~/Scripts/Search.js"></script>
+    <br>
+    <table class="table table-hover " id="lista_Personas">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdProvincia)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.nombrePersona)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.primerApellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.segundoApellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cedula)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.correo)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.telefono)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fechaNacimiento)
+            </th>
+            <th style="width:120px">
+                <p>Acciones&nbsp;&nbsp;</p>
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.C_Provincia.NombreProvincia)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombrePersona)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.primerApellido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.segundoApellido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cedula)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.correo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.telefono)
+                </td>
+                <td>
+                    @*@{
+                            DateTime actual = DateTime.Now;
+                            DateTime? fecha = item.fechaNacimiento;
+                            var edad = actual - fecha;
+                        }
+                        @Html.DisplayFor(modelItem => @edad)*@
+                    @Html.DisplayFor(modelItem => item.fechaNacimiento)
+                </td>
+
+                <td style="width:120px">
+                    <a href="@Url.Action("Edit", "C_Persona", new {id=item.IdPersona})">
+
+                        <i class="fas fa-edit" style="font-size:18px"></i>
+                    </a>&nbsp;
+
+                    <a href="@Url.Action("Details", "C_Persona", new { id = item.IdPersona})">
+
+                        <i class="fas fa-eye" style="font-size:18px"></i>
+                    </a>&nbsp;
+
+                    <a href="@Url.Action("Delete", "C_Persona", new { id = item.IdPersona })">
+
+                        <i class="fas fa-trash-alt" style="font-size:18px"></i>
+                    </a>&nbsp;
+
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+<script src="~/Scripts/Search.js"></script>
