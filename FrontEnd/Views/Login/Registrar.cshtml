@@ -1,0 +1,206 @@
+﻿@model BackEnd.Entities.Users
+
+@{
+    ViewBag.Title = "Registrar";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+
+
+
+<header class="masthead">
+
+    <form name="myForm" method="post" action="@Url.Action("Registrar", "Login")">
+
+        <div style="margin-top: 12%; margin-left: 10%; margin-right: 10%">
+            <div id="login-div">
+
+
+                <table>
+                    <tr>
+                        <td></td>
+                        <td style="color:#f4623a; font-size:medium">Ingrese los datos</td>
+
+                    </tr>
+                    <tr>
+                    <tr>
+                    <tr><td></td></tr>
+                    <tr><td></td></tr>
+                    <tr><td></td></tr>
+                    <tr>
+                    <tr>
+                    <tr>
+                    <tr>
+                    <tr><td></td></tr>
+                    <tr><td></td></tr>
+                    <tr><td></td></tr>
+                    <tr>
+                    <tr>
+
+                        <td>
+                            <label style="color:#f4623a; font-size:medium">Usuario&nbsp;</label>&nbsp;&nbsp;
+                        </td>
+                        <td width="200">
+
+                            <input type="text" name="user" placeholder="*Ingrese su usuario*" style="font-size:small" />
+
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                    <tr>
+                    <tr><td></td></tr>
+                    <tr><td></td></tr>
+                    <tr><td></td></tr>
+                    <tr>
+                    <tr>
+                    <tr>
+                    <tr>
+                    <tr><td></td></tr>
+                    <tr><td></td></tr>
+                    <tr><td></td></tr>
+                    <tr>
+                    <tr>
+
+
+                    <tr>
+
+
+                        <td>
+                            <label style="color:#f4623a; font-size:medium">Contraseña&nbsp;</label>&nbsp;&nbsp;
+                        </td>
+
+                        <td width="200">
+
+                            <input type="password" name="pass" placeholder="*Ingrese su contraseña*" style="font-size:small" />
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                    <tr>
+                    <tr><td></td></tr>
+                    <tr><td></td></tr>
+                    <tr><td></td></tr>
+                    <tr>
+                    <tr>
+                    <tr>
+                    <tr>
+                    <tr><td></td></tr>
+                    <tr><td></td></tr>
+                    <tr><td></td></tr>
+                    <tr>
+                    <tr>
+
+                    <tr>
+
+                        <td>
+                            <label style="color:#f4623a; font-size:medium">Nombre&nbsp;</label>&nbsp;&nbsp;
+                        </td>
+
+                        <td>
+                            <input type="text" name="nom" placeholder="*Ingrese su nombre*" style="font-size:small" />
+                        </td>
+                    </tr>
+
+                    <tr>
+
+                    <tr>
+                    <tr>
+                    <tr><td></td></tr>
+                    <tr><td></td></tr>
+                    <tr><td></td></tr>
+                    <tr>
+                    <tr>
+                    <tr>
+                    <tr>
+                    <tr><td></td></tr>
+                    <tr><td></td></tr>
+                    <tr><td></td></tr>
+                    <tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" name="name" value="Registrar" class="btn btn-primary" onclick="Button1()" />
+                            <input type="reset" name="name" value="Borrar" class="btn btn-outline-secondary" style="color:#dee2e6" />
+                        </td>
+
+
+                    </tr>
+
+                    <tr>
+                    <tr>
+                    <tr><td></td></tr>
+                    <tr><td></td></tr>
+                    <tr><td></td></tr>
+                    <tr>
+                    <tr>
+                    <tr>
+                    <tr>
+                    <tr><td></td></tr>
+                    <tr><td></td></tr>
+                    <tr><td></td></tr>
+                    <tr>
+                    <tr>
+
+                    <tr>
+
+                        <td style="color:#f4623a" colspan="3">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @Html.ActionLink("Regresar", "Index")
+                        </td>
+
+                    </tr>
+                </table>
+
+
+
+            </div>
+
+
+
+
+            @*<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+                <script src="~/Scripts/jquery.validate.min.js"></script>
+                <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
+        </div>
+    </form>
+</header>
+
+@* SCRIPT DE SWEETALERT PARA ELIMINAR UN REGISTRO MEDIANTE VENTANA MODAL *@
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+
+
+<script>
+    function Button1() {
+        event.preventDefault(); // prevent form submit
+        var form = document.forms["myForm"]; // storing the form
+        swal({
+            title: "Desea confirmar su registro?",
+            text: "Operacion de registro",
+            showCancelButton: true,
+            icon: "info",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    form.submit();
+                    swal("Registro exitoso", "Un administrador le asignara un rol para ingresar ", "success");
+                } else {
+                    swal("Cancelado", "El registro se ha cancelado", "error");
+                }
+            });
+    }
+</script>
+
+
+
+<br />
+<br />
+<br />
+<br />
+<br />

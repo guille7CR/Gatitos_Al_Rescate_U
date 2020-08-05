@@ -12,11 +12,11 @@
             <div id="login-div">
 
                 @using (Html.BeginForm("Autherize", "Login", FormMethod.Post))
-              {
-                  <table>
+                 {
+                <table>
                     <tr>
                         <td></td>
-                        <td style="text-decoration:underline;color:#f4623a; font-size:medium">Ingreso a la Aplicación</td>
+                        <td style="color:#f4623a; font-size:medium">Ingreso a la Aplicación</td>
 
                     </tr>
                     <tr>
@@ -37,13 +37,13 @@
                             @Html.LabelFor(model => model.UserName)
                             &nbsp;
                         </td>&nbsp;&nbsp;
-                        <td width="200">
-                            @Html.EditorFor(model => model.UserName)
+                        <td width="200" style="font-size:small">
+                            @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { placeholder = "*Ingrese su usuario*" } })
                         </td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td style="color: #dee2e6">@Html.ValidationMessageFor(model => model.UserName)</td>
+                        <td style="color: #dee2e6;font-size:x-small">@Html.ValidationMessageFor(model => model.UserName)</td>
                     </tr>
 
                     <tr>
@@ -63,25 +63,53 @@
 
 
                     <tr>
-                        <td style="color: #f4623a; font-size:medium">@Html.LabelFor(model => model.Password)&nbsp;</td>&nbsp;&nbsp;
+                        <td style="color: #f4623a; font-size:medium">@Html.LabelFor(model => model.Password)&nbsp;</td>
 
-                        <td width="200">@Html.EditorFor(model => model.Password)</td>
+                        <td width="200" style="font-size:small">@Html.EditorFor(model => model.Password, new { htmlAttributes = new { placeholder = "*Ingrese su contraseña*" } } ) </td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td style="color: #dee2e6">@Html.ValidationMessageFor(model => model.Password)</td>
+                        <td style="color: #dee2e6;font-size:x-small">@Html.ValidationMessageFor(model => model.Password)</td>
                     </tr>
                     <tr>
                         <td colspan="2">
                             <label class="field-validation-error" style="color: #dee2e6">@Html.DisplayFor(model => model.LoginErrorMessage)</label>
                         </td>
                     </tr>
+
                     <tr>
                         <td></td>
                         <td>
-                            <input type="submit" name="name" value="Login" class="btn btn-primary" />
+                            <input type="submit" name="name" value="Ingresar" class="btn btn-primary"/>
                             <input type="reset" name="name" value="Borrar" class="btn btn-outline-secondary" style="color:#dee2e6" />
                         </td>
+
+
+
+                    </tr>
+
+                    <tr>
+                    <tr>
+                    <tr><td></td></tr>
+                    <tr><td></td></tr>
+                    <tr><td></td></tr>
+                    <tr>
+                    <tr>
+                    <tr>
+                    <tr>
+                    <tr><td></td></tr>
+                    <tr><td></td></tr>
+                    <tr><td></td></tr>
+                    <tr>
+                    <tr>
+
+                    <tr>
+
+                        <td style="color:#f4623a" colspan="3">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @Html.ActionLink("Registrarse?", "Registrar")
+                        </td>
+
                     </tr>
                 </table>
                 

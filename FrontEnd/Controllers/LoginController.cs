@@ -1,4 +1,5 @@
 ﻿using BackEnd.DAL;
+using BackEnd.Entities;
 using FrontEnd.Models;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace FrontEnd.Controllers
 {
     public class LoginController : Controller
     {
-
+        private BDContext bd = new BDContext();
 
         private IUserDAL userDAL;
 
@@ -29,10 +30,8 @@ namespace FrontEnd.Controllers
         {
 
             userDAL = new UserDALImpl();
-            var userDetails = userDAL.getUser(userModel.UserName, userModel.Password);
-
-
-
+            string ePass = Encrypt.GetSHA256(userModel.Password);
+            var userDetails = userDAL.getUser(userModel.UserName, ePass);
 
 
             if (userDetails == null)
@@ -73,5 +72,36 @@ namespace FrontEnd.Controllers
             Response.Cookies.Add(cookie2);
             return RedirectToAction("Index", "Login");
         }
+
+        public ActionResult Registrar()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult Registrar(string user, string pass, string nom)
+        {
+
+            {
+
+                BackEnd.Entities.Users oUser = new BackEnd.Entities.Users();
+                oUser.UserName = user;
+                oUser.Password = Encrypt.GetSHA256(pass);
+                oUser.nombre = nom;
+                bd.Users.Add(oUser);
+                bd.SaveChanges();
+               
+
+            }
+
+            return RedirectToAction("Index", "Login");
+        }
+
+
+
     }
+
+
+
 }
