@@ -36,7 +36,7 @@ namespace FrontEnd.Controllers
 
             if (userDetails == null)
             {
-                userModel.LoginErrorMessage = "Nombre de Usuario o Password Incorrectos";
+                userModel.LoginErrorMessage = "Usuario ó contraseña incorrectos";
                 return View("Index", userModel);
             }
             else

@@ -122,8 +122,8 @@
                     <tr>
                         <td></td>
                         <td>
-                            <input type="submit"  name="name" value="Registrar" class="btn btn-primary" onclick="Button1()" />
-                            <input type="reset" name="name" value="Borrar" class="btn btn-outline-secondary" style="color:#dee2e6" />
+                            <input type="submit"  value="Registrar" class="btn btn-primary" onclick="Button1()" />
+                            <input type="reset"  value="Borrar" class="btn btn-outline-secondary" style="color:#dee2e6" />
                         </td>
 
 
@@ -182,8 +182,8 @@
         if ((username == "" || username == null) || (name == "" || name == null) || (password == "" || password == null)) {
 
             swal({
-                title: "El formulario tiene campos vacios!",
-                text: "Por favor complete la informacion!",
+                title: "El formulario tiene campos vacíos!",
+                text: "Por favor complete la información!",
                 icon: "warning",
             });
 
@@ -191,7 +191,7 @@
 
         swal({
             title: "Desea confirmar su registro?",
-            text: "Operacion de registro",
+            text: "Confirmación de registro de usuario",
             showCancelButton: true,
             icon: "info",
             buttons: true,
@@ -200,7 +200,7 @@
             .then((willDelete) => {
                 if (willDelete) {
                     form.submit();
-                    swal("Registro exitoso", "Un administrador le asignara un rol para ingresar ", "success");
+                    swal("Registro exitoso", "Un administrador le asignara un rol para ingresar", "success");
                 } else {
                     swal("Cancelado", "El registro se ha cancelado", "error");
                 }
