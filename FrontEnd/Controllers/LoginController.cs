@@ -80,15 +80,15 @@ namespace FrontEnd.Controllers
 
 
         [HttpPost]
-        public ActionResult Registrar(string user, string pass, string nom)
+        public ActionResult Registrar(string username, string password, string name)
         {
 
             {
 
                 BackEnd.Entities.Users oUser = new BackEnd.Entities.Users();
-                oUser.UserName = user;
-                oUser.Password = Encrypt.GetSHA256(pass);
-                oUser.nombre = nom;
+                oUser.UserName = username;
+                oUser.Password = Encrypt.GetSHA256(password);
+                oUser.nombre = name;
                 bd.Users.Add(oUser);
                 bd.SaveChanges();
                

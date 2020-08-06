@@ -36,9 +36,9 @@
                         <td style="color: #f4623a; font-size:medium">
                             @Html.LabelFor(model => model.UserName)
                             &nbsp;
-                        </td>&nbsp;&nbsp;
+                        </td>&nbsp;&nbsp;&nbsp;
                         <td width="200" style="font-size:small">
-                            @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { placeholder = "*Ingrese su usuario*" } })
+                            @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { placeholder = "*Ingrese su usuario*", @class = "form-control", @style = "font-size:small" } })
                         </td>
                     </tr>
                     <tr>
@@ -63,9 +63,9 @@
 
 
                     <tr>
-                        <td style="color: #f4623a; font-size:medium">@Html.LabelFor(model => model.Password)&nbsp;</td>
+                        <td style="color: #f4623a; font-size:medium">@Html.LabelFor(model => model.Password)&nbsp;&nbsp;</td>
 
-                        <td width="200" style="font-size:small">@Html.EditorFor(model => model.Password, new { htmlAttributes = new { placeholder = "*Ingrese su contraseña*" } } ) </td>
+                        <td width="200" style="font-size:small">@Html.EditorFor(model => model.Password, new { htmlAttributes = new { placeholder = "*Ingrese su contraseña*", @class = "form-control",@style="font-size:small"  } }) </td>
                     </tr>
                     <tr>
                         <td></td>

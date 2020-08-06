@@ -42,7 +42,7 @@
                         </td>
                         <td width="200">
 
-                            <input type="text" name="user" placeholder="*Ingrese su usuario*" style="font-size:small" />
+                            <input type="text" name="username" id="username" placeholder="*Ingrese un usuario*" style="font-size:small" class="form-control" required/>
 
                         </td>
                     </tr>
@@ -73,7 +73,7 @@
 
                         <td width="200">
 
-                            <input type="password" name="pass" placeholder="*Ingrese su contraseña*" style="font-size:small" />
+                            <input type="password" class="form-control" id="password" name="password" placeholder="*Ingrese un contraseña*" style="font-size:small" required/>
 
                         </td>
                     </tr>
@@ -100,7 +100,7 @@
                         </td>
 
                         <td>
-                            <input type="text" name="nom" placeholder="*Ingrese su nombre*" style="font-size:small" />
+                            <input type="text" id="name"  name="name" placeholder="*Ingrese un nombre*" style="font-size:small" class="form-control" required/>
                         </td>
                     </tr>
 
@@ -122,7 +122,7 @@
                     <tr>
                         <td></td>
                         <td>
-                            <input type="submit" name="name" value="Registrar" class="btn btn-primary" onclick="Button1()" />
+                            <input type="submit"  name="name" value="Registrar" class="btn btn-primary" onclick="Button1()" />
                             <input type="reset" name="name" value="Borrar" class="btn btn-outline-secondary" style="color:#dee2e6" />
                         </td>
 
@@ -158,9 +158,6 @@
 
             </div>
 
-
-
-
             @*<script src="~/Scripts/jquery-1.10.2.min.js"></script>
                 <script src="~/Scripts/jquery.validate.min.js"></script>
                 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
@@ -177,7 +174,21 @@
 <script>
     function Button1() {
         event.preventDefault(); // prevent form submit
+        var username = document.myForm.username.value;
+        var password = document.myForm.password.value;
+        var name = document.myForm.name.value;
         var form = document.forms["myForm"]; // storing the form
+
+        if ((username == "" || username == null) || (name == "" || name == null) || (password == "" || password == null)) {
+
+            swal({
+                title: "El formulario tiene campos vacios!",
+                text: "Por favor complete la informacion!",
+                icon: "warning",
+            });
+
+        } else {
+
         swal({
             title: "Desea confirmar su registro?",
             text: "Operacion de registro",
@@ -194,6 +205,7 @@
                     swal("Cancelado", "El registro se ha cancelado", "error");
                 }
             });
+        }
     }
 </script>
 
