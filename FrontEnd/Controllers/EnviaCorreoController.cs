@@ -25,20 +25,21 @@ namespace FrontEnd.Controllers
 
 
         [HttpPost]
-      public ActionResult EnviarCorreo( String txtPass, String de, String para, String asunto, String mensaje, HttpPostedFileBase fichero)
+      public ActionResult EnviarCorreo(String contactoCorreo, String contactoNombre, String asunto, String mensaje, HttpPostedFileBase fichero)
         {
             try
             {
                 MailMessage correo = new MailMessage();
-                correo.From = new MailAddress(de);
-                correo.To.Add(para);
+                correo.From = new MailAddress("gramirez7CR@gmail.com");
+                correo.To.Add("gramirez7CR@gmail.com");
                 correo.Subject = asunto;
                 String ruta = Server.MapPath("");
                 fichero.SaveAs(Server.MapPath("/") + "/Cargas/" + fichero.FileName);
                 Attachment adjunto = new Attachment(Server.MapPath("/") + "/Cargas/" + fichero.FileName);
                 correo.Attachments.Add(adjunto);
 
-                correo.Body = "DE : " + correo.From+ "<br/>" + "<br/>" +
+                correo.Body = "CORREO : " + contactoCorreo+ "<br/>" + "<br/>" +
+                              "NOMBRE : " + contactoNombre + "<br/>" + "<br/>" +
                               "PARA : " +correo.To+ "<br/>" + "<br/>" +
                               "MENSAJE : " + mensaje +"<br/>"+ "<br/>" +
                               "IMAGEN : " +"<br/>" + "<br/>" ;
@@ -54,7 +55,7 @@ namespace FrontEnd.Controllers
                 smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
                 smtp.EnableSsl = true;
                 smtp.UseDefaultCredentials = false;
-                smtp.Credentials = new NetworkCredential(de, txtPass);
+                smtp.Credentials = new NetworkCredential("gramirez7CR@gmail.com", "scikitlearn7CR");
                 
                 smtp.Send(correo);
                 ViewBag.Mensaje = "Se ha enviado el correo";
