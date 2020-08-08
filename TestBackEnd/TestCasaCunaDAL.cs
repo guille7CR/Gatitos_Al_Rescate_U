@@ -8,13 +8,14 @@ using BackEnd.DAL;
 using BackEnd.Entities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace TestBackEnd 
+namespace TestBackEnd
 {
     [TestClass]
     public class TestCasaCunaDAL
     {
         private UnidadDeTrabajo<C_CasaCuna> unidad;
 
+        public UnidadDeTrabajo<C_CasaCuna> Unidad { get => unidad; set => unidad = value; }
 
         [TestMethod]
         public void TestAddGenerico()
@@ -22,19 +23,19 @@ namespace TestBackEnd
 
             C_CasaCuna casaCuna = new C_CasaCuna
             {
-                Metros = "metras"
+                Metros = "metros"
             };
 
 
 
-            using (unidad = new UnidadDeTrabajo<C_CasaCuna>(new BDContext()))
+            using (Unidad = new UnidadDeTrabajo<C_CasaCuna>(new BDContext()))
             {
-                unidad.genericDAL.Add(casaCuna);
-                Assert.AreEqual(true, unidad.Complete());
+                Unidad.genericDAL.Add(casaCuna);
+                Assert.AreEqual(true, Unidad.Complete());
             }
 
         }
 
-       
+
     }
 }
