@@ -5,78 +5,69 @@
 }
 
 
-
-<form method="post" enctype="multipart/form-data">
-
+<form name="myForm" method="post" enctype="multipart/form-data" action="@Url.Action("EnviarCorreo", "EnviaCorreo")">
 
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
 
 
-    <div class="form-horizontal" style="margin-top: 12%; margin-left: 10%; margin-right: 10%">
+        <div class="form-horizontal" style="margin-top: 12%; margin-left: 10%; margin-right: 10%">
 
-        <h1 >Enviar Comentario/Dudas</h1><br />
-        <h3>Favor ingresar la información requerida a continuación</h3>
+            <h1>Enviar Comentario/Dudas</h1><br />
+            <h3>Favor ingresar la información requerida a continuación</h3>
 
-        <hr />
+            <hr />
 
-
-        <div class="form-group">
-            <label class="control-label col-md-2" style="font-weight:bold">De :</label>
-            <div class="col-md-6">
-                <input class="form-control" type="email" name="de" placeholder="Correo origen" />
+            <div class="form-group">
+                <label class="control-label col-md-2" style="font-weight:bold">Correo :</label>
+                <div class="col-md-6">
+                    <input class="form-control" type="email" name="contactoCorreo" id="contactoCorreo" placeholder="Correo electronico" />
+                </div>
             </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" style="font-weight:bold">Nombre :</label>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" id="contactoNombre" name="contactoNombre" placeholder="Nombre completo" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" style="font-weight:bold">Asunto :</label>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" id="asunto" name="asunto" placeholder="Título" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" style="font-weight:bold">Mensaje :</label>
+                <div class="col-md-6">
+                    <textarea style="width:650px;height:200px" id="mensaje" name="mensaje" placeholder="Escriba su mensaje"></textarea>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+
+                <div class="col-md-6">
+                    <input type="file" class="btn btn-default" name="fichero" id="fichero" required>
+                </div>
+            </div><br />
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    &nbsp;
+                    <input id="enviar" onclick="Button1()" value="Enviar correo" style="border:0; color: #fff; margin-top:10px; border-radius:5px;background:linear-gradient(to right, #0ba360, #3cba92, #30dd8a, #2bb673); box-shadow: 0 4px 15px 0 rgba(23, 168, 108, 0.75); letter-spacing:1px; padding:12px 10px" type="submit" />
+                </div>
+            </div><br />
+
+            <div>
+
+                &nbsp;&nbsp; @Html.ActionLink("Regresar al Inicio", "Index")
+            </div>
+
         </div>
-
-        <div class="form-group">
-            <label class="control-label col-md-2" style="font-weight:bold">Contraseña :</label>
-            <div class="col-md-6">
-                <input class="form-control" type="password" name="txtPass" placeholder="Contraseña" />
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="control-label col-md-2" style="font-weight:bold">Para :</label>
-            <div class="col-md-6">
-                <input class="form-control" type="email" name="para" placeholder="Correo destino" />
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="control-label col-md-2" style="font-weight:bold">Asunto :</label>
-            <div class="col-md-6">
-                <input class="form-control" type="text" name="asunto" placeholder="Título" />
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="control-label col-md-2" style="font-weight:bold">Mensaje :</label>
-            <div class="col-md-6">
-                <textarea style="width:650px;height:200px" name="mensaje" placeholder="Escriba su mensaje"></textarea>
-            </div>
-        </div>
-
-
-        <div class="form-group">
-
-            <div class="col-md-6">
-                <input type="file" class="btn btn-default" name="fichero" required>
-            </div>
-        </div><br />
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">&nbsp
-                <button id="enviar" style="border:0; color: #fff; margin-top:10px; border-radius:5px;background:linear-gradient(to right, #0ba360, #3cba92, #30dd8a, #2bb673); box-shadow: 0 4px 15px 0 rgba(23, 168, 108, 0.75); letter-spacing:1px; padding:12px 10px" type="submit">Enviar correo</button>
-            </div>
-        </div><br />
-        
-              <div>
-
-                  &nbsp;&nbsp; @Html.ActionLink("Regresar al Inicio", "Index")
-              </div>
-
-    </div>
     }
 
 </form>
@@ -85,6 +76,50 @@
 <br />
 <h3 style="color:blue; text-align:center">@ViewBag.Error</h3>
 
+@* SCRIPT DE SWEETALERT PARA ELIMINAR UN REGISTRO MEDIANTE VENTANA MODAL *@
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script>
+    function Button1() {
+
+        event.preventDefault(); // prevent form submit
+        var contactoC = document.myForm.contactoCorreo.value;
+        var contactoN = document.myForm.contactoNombre.value;
+        var msgV = document.myForm.mensaje.value;
+        var asuntoV = document.myForm.asunto.value;
+        var emailV = document.myForm.fichero.value;
+        var form = document.forms["myForm"]; // storing the form
+
+        if ((contactoC == "" || contactoC == null) || (contactoN == "" || contactoN == null) ||
+            (msgV == "" || msgV == null) || (asuntoV == "" || asuntoV == null) || (emailV == "" || emailV == null)) {
+
+            swal({
+                title: "El formulario tiene información faltante!",
+                text: "Por favor complete la información!",
+                icon: "warning",
+            });
+
+        } else {
+
+            swal({
+                title: "Desea enviar el correo?",
+                text: "Confirmación de envio",
+                showCancelButton: true,
+                icon: "info",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        form.submit();
+                        swal("Enviado", "El correo se ha enviado", "success");
+                    } else {
+                        swal("Cancelado", "El correo no se ha enviado", "error");
+                    }
+                });
+        }
+    }
+</script>
 
 
 @section Scripts {
