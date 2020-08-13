@@ -24,13 +24,16 @@ namespace FrontEnd.Models
 
         public string LoginErrorMessage { get; set; }
 
-        public int UserId { get; set; }
+        [Display(Name = "Usuario")]
         [Required(ErrorMessage = "Debe seleccionar un nombre de usuario!")]
+        public int UserId { get; set; }
         public List<SelectListItem> ListaUsuarios { get; set; }
-        public int RoleId { get; set; }
+
         [Display(Name = "Rol de Usuario")]
-        public string RoleName { get; set; }
         [Required(ErrorMessage = "Debe seleccionar un rol!")]
+        public int RoleId { get; set; }
+        public string RoleName { get; set; }
+        
         public List<SelectListItem> ListaRoles { get; set; }
         public virtual ICollection<Roles> Roles { get; set; }
 

@@ -123,7 +123,8 @@ namespace FrontEnd.Controllers
             usuario.ListaUsuarios = userDAL.getUsers();
 
             usuario.ListaRoles = userDAL.getRoles();
-
+            
+              
 
             return RedirectToAction("RegistrarRoles", "Login");
 

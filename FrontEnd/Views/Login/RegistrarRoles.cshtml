@@ -5,50 +5,103 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
+
 <div style="margin-top: 12%; margin-left: 10%; margin-right: 10%">
 
 
     <div style="margin-top: 12%; margin-left: 10%; margin-right: 10%; text-align:center">
 
-        <h2>Registro de Roles</h2>
+        <h1>Registro de Roles</h1>
         <br />
         <br />
-    </div>
-
-    @using (Html.BeginForm("RegistrarRoles", "Login", FormMethod.Post))
-    {
-        @Html.AntiForgeryToken()
-
-<div class="form-horizontal">
-    <h4>Seleccione el usuario y el rol a asignar</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
-    <div class="col-md-10">
-        @Html.DropDownListFor(model => model.UserId, new SelectList(Model.ListaUsuarios, "Value", "Text"), "--Seleccionar--")
-        @Html.ValidationMessageFor(model => model.UserId, "", new { @class = "text-danger" })
-    </div>
-</div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.RoleName, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(model => model.RoleId, new SelectList(Model.ListaRoles, "Value", "Text"), "--Seleccionar--")
-            @Html.ValidationMessageFor(model => model.RoleId, "", new { @class = "text-danger" })
-        </div>
+        <br />
+      
     </div>
 
 
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Asignar Rol" class="btn btn-primary" />
+
+    <form name="myForm" method="post" action="@Url.Action("RegistrarRoles", "Login")">
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4>Seleccione el usuario y el rol a asignar</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group" style="font-weight:bold">
+                    @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.UserId, new SelectList(Model.ListaUsuarios, "Value", "Text"), "--Seleccionar--")
+                        @Html.ValidationMessageFor(model => model.UserId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+
+                <div class="form-group" style="font-weight:bold">
+                    @Html.LabelFor(model => model.RoleName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.RoleId, new SelectList(Model.ListaRoles, "Value", "Text"), "--Seleccionar--")
+                        @Html.ValidationMessageFor(model => model.RoleId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Asignar Rol" class="btn btn-primary" onclick="Button1()" />
+                    </div>
                 </div>
             </div>
-        </div>
-    }
-    <hr />
-    <div>
-        @Html.ActionLink("Volver","Index","Home")
-    </div>
+            <br />
+         }
+            <hr />
+            <div>
+                @Html.ActionLink("Regresar al Inicio", "Index", "Home")
+            </div>
+
+        </form>
 </div>
+
+
+
+@* SCRIPT DE SWEETALERT PARA ELIMINAR UN REGISTRO MEDIANTE VENTANA MODAL *@
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+
+
+<script>
+    function Button1() {
+        event.preventDefault(); // prevent form submit
+
+        var form = document.forms["myForm"]; // storing the form
+
+        swal({
+            title: "Desea confirmar el rol?",
+            text: "Confirmación de rol",
+            showCancelButton: true,
+            icon: "info",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    form.submit();
+                    swal("Solicitud enviada", "Se ha solicitado asignar un rol", "success");
+                } else {
+                    swal("Cancelado", "El rol no se ha asignado", "error");
+                }
+            });
+    }
+    }
+</script>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
