@@ -29,9 +29,9 @@ namespace FrontEnd.Models
         public int UserId { get; set; }
         public List<SelectListItem> ListaUsuarios { get; set; }
 
-        [Display(Name = "Rol de Usuario")]
         [Required(ErrorMessage = "Debe seleccionar un rol!")]
         public int RoleId { get; set; }
+        [Display(Name = "Rol de Usuario")]
         public string RoleName { get; set; }
         
         public List<SelectListItem> ListaRoles { get; set; }
