@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace FrontEnd.Models
 {
@@ -23,6 +24,14 @@ namespace FrontEnd.Models
 
         public string LoginErrorMessage { get; set; }
 
+        public int UserId { get; set; }
+        [Required(ErrorMessage = "Debe seleccionar un nombre de usuario!")]
+        public List<SelectListItem> ListaUsuarios { get; set; }
+        public int RoleId { get; set; }
+        [Display(Name = "Rol de Usuario")]
+        public string RoleName { get; set; }
+        [Required(ErrorMessage = "Debe seleccionar un rol!")]
+        public List<SelectListItem> ListaRoles { get; set; }
         public virtual ICollection<Roles> Roles { get; set; }
 
     }

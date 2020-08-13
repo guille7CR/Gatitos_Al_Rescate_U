@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace BackEnd.DAL
 {
@@ -22,5 +23,8 @@ namespace BackEnd.DAL
         List<Roles> listarRoles();
         bool eliminar(string idRole, int idUsuario);
         Users ObtenerPorID(int id);
+        string spUsuariosRoles(int usuarios, int roles);
+        List<SelectListItem> getUsers();
+        List<SelectListItem> getRoles();
     }
 }

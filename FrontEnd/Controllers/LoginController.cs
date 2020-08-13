@@ -98,6 +98,37 @@ namespace FrontEnd.Controllers
             return RedirectToAction("Index", "Login");
         }
 
+        [Authorize(Roles = "Administrador")]
+        [HttpGet]
+        public ActionResult RegistrarRoles()
+        {
+            IUserDAL user = new UserDALImpl();
+            UserViewModel usersLi = new UserViewModel();
+            usersLi.ListaUsuarios = user.getUsers();
+           
+            usersLi.ListaRoles = user.getRoles();
+            return View(usersLi);
+            //return View(usersLi, rolesLi);
+        }
+
+        [HttpPost]
+
+        public ActionResult RegistrarRoles(UserViewModel usuario)
+        {
+
+            IUserDAL userDAL = new UserDALImpl();
+
+           var data= userDAL.spUsuariosRoles(usuario.UserId,usuario.RoleId);
+
+            usuario.ListaUsuarios = userDAL.getUsers();
+
+            usuario.ListaRoles = userDAL.getRoles();
+
+
+            return RedirectToAction("RegistrarRoles", "Login");
+
+        }
+
 
 
     }

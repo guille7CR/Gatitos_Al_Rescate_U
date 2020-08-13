@@ -16,17 +16,19 @@
                 {
                     <li class="nav-item">@Html.ActionLink("Personas", "Index", "C_Persona") </li>
                     @:&nbsp;&nbsp;
-                    <li class="nav-item col-sm-4 ">@Html.ActionLink("Casa Cuna", "Index", "C_CasaCuna") </li>
-
+                    <li class="nav-item col-sm-auto">@Html.ActionLink("Casa Cuna", "Index", "C_CasaCuna") </li>
+                    @:&nbsp;&nbsp;
+                    <li class="nav-item col-sm-auto">@Html.ActionLink("Asignar Rol", "RegistrarRoles", "Login") </li>
 
                 }
             </ul>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 
 
-            <p class="nav-item col-md-4" style="color:#808080;font-weight:bold"> Usuario | @Session["UserName"]&nbsp;&nbsp;
-               <i class="fas fa-user-circle" style="font-size:30px; color:#f4623a;"></i>
+            <p class="nav-item col-md-4" style="color:#808080;font-weight:bold">
+                Usuario | @Session["UserName"]&nbsp;&nbsp;
+                <i class="fas fa-user-circle" style="font-size:30px; color:#f4623a;"></i>
             </p>&nbsp;&nbsp;
             <a href="~/Login/LogOut">
                 <img class="img-profile rounded-circle float-right" src="~/Content/assets/img/logout.png" style="width:1.8rem; position:absolute; top:25px;right:25px">

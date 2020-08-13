@@ -10,16 +10,9 @@
 namespace BackEnd.Entities
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class C_Usuarios
+    public partial class sp_UsersInRoles_Result
     {
-        public int IdUsuario { get; set; }
-        public Nullable<int> IdRol { get; set; }
-        public string Usuario { get; set; }
-        public string Contrasena { get; set; }
-        public Nullable<System.DateTime> FechaCreacion { get; set; }
-    
-        public virtual C_Roles C_Roles { get; set; }
+        public string msjRespuesta { get; set; }
     }
 }

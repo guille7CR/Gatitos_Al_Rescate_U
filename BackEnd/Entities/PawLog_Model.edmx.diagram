@@ -4,33 +4,30 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f0fe506b6a8d47f7ba4d5b79e234b573" Name="Diagram1">
-        <EntityTypeShape EntityType="Paw_Log_DBModel.C_Adopciones" Width="1.5" PointX="9.75" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Paw_Log_DBModel.C_Animales" Width="1.5" PointX="7.5" PointY="8" IsExpanded="true" />
-        <EntityTypeShape EntityType="Paw_Log_DBModel.C_Canton" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Paw_Log_DBModel.C_CasaCuna" Width="1.5" PointX="9.75" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Paw_Log_DBModel.C_Distrito" Width="1.5" PointX="5.25" PointY="2.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Paw_Log_DBModel.C_Persona" Width="1.5" PointX="7.5" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Paw_Log_DBModel.C_Provincia" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
-        <EntityTypeShape EntityType="Paw_Log_DBModel.C_Roles" Width="1.5" PointX="9.75" PointY="10.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Paw_Log_DBModel.C_Tamanos" Width="1.5" PointX="5.25" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Paw_Log_DBModel.C_Temperamentos" Width="1.5" PointX="5.25" PointY="10.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Paw_Log_DBModel.C_Usuarios" Width="1.5" PointX="12" PointY="9.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Paw_Log_DBModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
-        <AssociationConnector Association="Paw_Log_DBModel.FK_C_Adopciones_C_Animales" ManuallyRouted="false" />
-        <AssociationConnector Association="Paw_Log_DBModel.FK_C_Adopciones_C_Persona" ManuallyRouted="false" />
-        <AssociationConnector Association="Paw_Log_DBModel.FK_C_Animales_C_Tamanos" ManuallyRouted="false" />
-        <AssociationConnector Association="Paw_Log_DBModel.FK_C_Animales_C_Temperamentos" ManuallyRouted="false" />
-        <AssociationConnector Association="Paw_Log_DBModel.FK_C_Canton_C_Provincia" ManuallyRouted="false" />
-        <AssociationConnector Association="Paw_Log_DBModel.FK_C_Distrito_C_Canton" ManuallyRouted="false" />
-        <AssociationConnector Association="Paw_Log_DBModel.FK_C_Persona_C_Canton" ManuallyRouted="false" />
-        <AssociationConnector Association="Paw_Log_DBModel.FK_C_CasaCuna_C_Persona" ManuallyRouted="false" />
-        <AssociationConnector Association="Paw_Log_DBModel.FK_C_Persona_C_Distrito" ManuallyRouted="false" />
-        <AssociationConnector Association="Paw_Log_DBModel.FK_C_Persona_C_Provincia" ManuallyRouted="false" />
-        <AssociationConnector Association="Paw_Log_DBModel.FK_C_Usuarios_C_Roles" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="Paw_Log_DBModel.Roles" Width="1.5" PointX="12.375" PointY="1.125" />
-        <EntityTypeShape EntityType="Paw_Log_DBModel.Users" Width="1.5" PointX="14.625" PointY="0.875" />
-        <AssociationConnector Association="Paw_Log_DBModel.UsersInRoles" />
+      <Diagram DiagramId="f7cf1d451a79406584df743df46fde82" Name="Diagram1">
+        <EntityTypeShape EntityType="PAW_LOG_DBModel.C_Adopciones" Width="1.5" PointX="9.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PAW_LOG_DBModel.C_Animales" Width="1.5" PointX="7.5" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="PAW_LOG_DBModel.C_Canton" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PAW_LOG_DBModel.C_CasaCuna" Width="1.5" PointX="9.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PAW_LOG_DBModel.C_Distrito" Width="1.5" PointX="5.25" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PAW_LOG_DBModel.C_Persona" Width="1.5" PointX="7.5" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PAW_LOG_DBModel.C_Provincia" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="PAW_LOG_DBModel.C_Tamanos" Width="1.5" PointX="5.25" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PAW_LOG_DBModel.C_Temperamentos" Width="1.5" PointX="5.25" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PAW_LOG_DBModel.Roles" Width="1.5" PointX="9.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PAW_LOG_DBModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PAW_LOG_DBModel.Users" Width="1.5" PointX="12" PointY="9.875" IsExpanded="true" />
+        <AssociationConnector Association="PAW_LOG_DBModel.FK_C_Adopciones_C_Animales" ManuallyRouted="false" />
+        <AssociationConnector Association="PAW_LOG_DBModel.FK_C_Adopciones_C_Persona" ManuallyRouted="false" />
+        <AssociationConnector Association="PAW_LOG_DBModel.FK_C_Animales_C_Tamanos" ManuallyRouted="false" />
+        <AssociationConnector Association="PAW_LOG_DBModel.FK_C_Animales_C_Temperamentos" ManuallyRouted="false" />
+        <AssociationConnector Association="PAW_LOG_DBModel.FK_C_Canton_C_Provincia" ManuallyRouted="false" />
+        <AssociationConnector Association="PAW_LOG_DBModel.FK_C_Distrito_C_Canton" ManuallyRouted="false" />
+        <AssociationConnector Association="PAW_LOG_DBModel.FK_C_Persona_C_Canton" ManuallyRouted="false" />
+        <AssociationConnector Association="PAW_LOG_DBModel.FK_C_CasaCuna_C_Persona" ManuallyRouted="false" />
+        <AssociationConnector Association="PAW_LOG_DBModel.FK_C_Persona_C_Distrito" ManuallyRouted="false" />
+        <AssociationConnector Association="PAW_LOG_DBModel.FK_C_Persona_C_Provincia" ManuallyRouted="false" />
+        <AssociationConnector Association="PAW_LOG_DBModel.UsersInRoles" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

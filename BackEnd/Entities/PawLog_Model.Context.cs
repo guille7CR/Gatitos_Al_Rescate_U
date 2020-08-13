@@ -34,12 +34,10 @@ namespace BackEnd.Entities
         public virtual DbSet<C_Distrito> C_Distrito { get; set; }
         public virtual DbSet<C_Persona> C_Persona { get; set; }
         public virtual DbSet<C_Provincia> C_Provincia { get; set; }
-        public virtual DbSet<C_Roles> C_Roles { get; set; }
         public virtual DbSet<C_Tamanos> C_Tamanos { get; set; }
         public virtual DbSet<C_Temperamentos> C_Temperamentos { get; set; }
-        public virtual DbSet<C_Usuarios> C_Usuarios { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Roles> Roles { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Users> Users { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
@@ -97,6 +95,24 @@ namespace BackEnd.Entities
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
         }
     
+        public virtual ObjectResult<string> sp_getRolesForUser(string userName)
+        {
+            var userNameParameter = userName != null ?
+                new ObjectParameter("userName", userName) :
+                new ObjectParameter("userName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("sp_getRolesForUser", userNameParameter);
+        }
+    
+        public virtual ObjectResult<string> sp_getUsuariosRole(string roleName)
+        {
+            var roleNameParameter = roleName != null ?
+                new ObjectParameter("roleName", roleName) :
+                new ObjectParameter("roleName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("sp_getUsuariosRole", roleNameParameter);
+        }
+    
         public virtual ObjectResult<sp_helpdiagramdefinition_Result> sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
         {
             var diagramnameParameter = diagramname != null ?
@@ -123,6 +139,19 @@ namespace BackEnd.Entities
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams_Result>("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
         }
     
+        public virtual ObjectResult<Nullable<bool>> sp_isUserInRole(string userName, string roleName)
+        {
+            var userNameParameter = userName != null ?
+                new ObjectParameter("userName", userName) :
+                new ObjectParameter("userName", typeof(string));
+    
+            var roleNameParameter = roleName != null ?
+                new ObjectParameter("roleName", roleName) :
+                new ObjectParameter("roleName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("sp_isUserInRole", userNameParameter, roleNameParameter);
+        }
+    
         public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)
         {
             var diagramnameParameter = diagramname != null ?
@@ -138,11 +167,6 @@ namespace BackEnd.Entities
                 new ObjectParameter("new_diagramname", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_renamediagram", diagramnameParameter, owner_idParameter, new_diagramnameParameter);
-        }
-    
-        public virtual int sp_upgraddiagrams()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
     
         public virtual ObjectResult<sp_ReporteAdopciones_Result> sp_ReporteAdopciones(string idCedula)
@@ -168,35 +192,22 @@ namespace BackEnd.Entities
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ReportePersonas_Result>("sp_ReportePersonas");
         }
     
-        public virtual ObjectResult<string> sp_getRolesForUser(string userName)
+        public virtual int sp_upgraddiagrams()
         {
-            var userNameParameter = userName != null ?
-                new ObjectParameter("userName", userName) :
-                new ObjectParameter("userName", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("sp_getRolesForUser", userNameParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
     
-        public virtual ObjectResult<string> sp_getUsuariosRole(string roleName)
+        public virtual ObjectResult<sp_UsersInRoles_Result> sp_UsersInRoles(Nullable<int> idUser, Nullable<int> idRol)
         {
-            var roleNameParameter = roleName != null ?
-                new ObjectParameter("roleName", roleName) :
-                new ObjectParameter("roleName", typeof(string));
+            var idUserParameter = idUser.HasValue ?
+                new ObjectParameter("IdUser", idUser) :
+                new ObjectParameter("IdUser", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("sp_getUsuariosRole", roleNameParameter);
-        }
+            var idRolParameter = idRol.HasValue ?
+                new ObjectParameter("IdRol", idRol) :
+                new ObjectParameter("IdRol", typeof(int));
     
-        public virtual ObjectResult<Nullable<bool>> sp_isUserInRole(string userName, string roleName)
-        {
-            var userNameParameter = userName != null ?
-                new ObjectParameter("userName", userName) :
-                new ObjectParameter("userName", typeof(string));
-    
-            var roleNameParameter = roleName != null ?
-                new ObjectParameter("roleName", roleName) :
-                new ObjectParameter("roleName", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("sp_isUserInRole", userNameParameter, roleNameParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_UsersInRoles_Result>("sp_UsersInRoles", idUserParameter, idRolParameter);
         }
     }
 }

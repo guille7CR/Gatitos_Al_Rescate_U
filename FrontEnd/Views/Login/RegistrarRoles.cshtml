@@ -1,0 +1,54 @@
+﻿@model FrontEnd.Models.UserViewModel
+
+@{
+    ViewBag.Title = "RegistrarRoles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="margin-top: 12%; margin-left: 10%; margin-right: 10%">
+
+
+    <div style="margin-top: 12%; margin-left: 10%; margin-right: 10%; text-align:center">
+
+        <h2>Registro de Roles</h2>
+        <br />
+        <br />
+    </div>
+
+    @using (Html.BeginForm("RegistrarRoles", "Login", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Seleccione el usuario y el rol a asignar</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.DropDownListFor(model => model.UserId, new SelectList(Model.ListaUsuarios, "Value", "Text"), "--Seleccionar--")
+        @Html.ValidationMessageFor(model => model.UserId, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.RoleName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.RoleId, new SelectList(Model.ListaRoles, "Value", "Text"), "--Seleccionar--")
+            @Html.ValidationMessageFor(model => model.RoleId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Asignar Rol" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    }
+    <hr />
+    <div>
+        @Html.ActionLink("Volver","Index","Home")
+    </div>
+</div>

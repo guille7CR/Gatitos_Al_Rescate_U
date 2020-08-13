@@ -102,16 +102,10 @@
     <Compile Include="Entities\C_Provincia.cs">
       <DependentUpon>PawLog_Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entities\C_Roles.cs">
-      <DependentUpon>PawLog_Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="Entities\C_Tamanos.cs">
       <DependentUpon>PawLog_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\C_Temperamentos.cs">
-      <DependentUpon>PawLog_Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\C_Usuarios.cs">
       <DependentUpon>PawLog_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\PawLog_Model.Context.cs">
@@ -147,6 +141,9 @@
     <Compile Include="Entities\sp_ReportePersonas_Result.cs">
       <DependentUpon>PawLog_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\sp_UsersInRoles_Result.cs">
+      <DependentUpon>PawLog_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\sysdiagrams.cs">
       <DependentUpon>PawLog_Model.tt</DependentUpon>
     </Compile>
@@ -157,32 +154,30 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <None Include="App.Config" />
     <EntityDeploy Include="Entities\PawLog_Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>PawLog_Model.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
     <None Include="Entities\PawLog_Model.edmx.diagram">
       <DependentUpon>PawLog_Model.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Entities\PawLog_Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>PawLog_Model.Context.cs</LastGenOutput>
       <DependentUpon>PawLog_Model.edmx</DependentUpon>
+      <LastGenOutput>PawLog_Model.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Entities\PawLog_Model.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>PawLog_Model.edmx</DependentUpon>
       <LastGenOutput>PawLog_Model.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

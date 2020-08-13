@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 using BackEnd.Entities;
 
 namespace BackEnd.DAL
@@ -135,6 +136,76 @@ namespace BackEnd.DAL
         public Users ObtenerPorID(int id)
         {
             throw new NotImplementedException();
+        }
+
+        public string spUsuariosRoles(int usuarios, int roles)
+        {
+
+            using (BDContext context = new BDContext())
+            {
+
+                var result = context.sp_UsersInRoles(usuarios, roles).FirstOrDefault();
+
+                return result.msjRespuesta.ToString();
+            }
+
+        }
+
+        public List<SelectListItem> getUsers()
+        {
+
+
+            using (UnidadDeTrabajo<Users> unidad = new UnidadDeTrabajo<Users>(new BDContext()))
+            {
+
+                List<SelectListItem> li = new List<SelectListItem>();
+                var listado = unidad.genericDAL.GetAll();
+
+                foreach (var dato in listado)
+                {
+                    li.Add(new SelectListItem
+                    {
+                        Value = dato.UserId.ToString(),
+                        Text = dato.UserName
+                    });
+                };
+
+
+                return li;
+
+
+            }
+
+
+        }
+
+
+        public List<SelectListItem> getRoles()
+        {
+
+
+            using (UnidadDeTrabajo<Roles> unidad = new UnidadDeTrabajo<Roles>(new BDContext()))
+            {
+
+                List<SelectListItem> liRol = new List<SelectListItem>();
+                var listadoRol = unidad.genericDAL.GetAll();
+
+                foreach (var datoRol in listadoRol)
+                {
+                    liRol.Add(new SelectListItem
+                    {
+                        Value = datoRol.RoleId.ToString(),
+                        Text = datoRol.RoleName
+                    });
+                };
+
+
+                return liRol;
+
+
+            }
+
+
         }
     }
 }

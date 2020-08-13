@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Paw_Log_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="PAW_LOG_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="C_Adopciones">
           <Key>
             <PropertyRef Name="IdAdopcion" />
@@ -84,13 +84,6 @@
           <Property Name="IdProvincia" Type="int" Nullable="false" />
           <Property Name="NombreProvincia" Type="varchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="C_Roles">
-          <Key>
-            <PropertyRef Name="IdRol" />
-          </Key>
-          <Property Name="IdRol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Roles" Type="varchar" MaxLength="20" />
-        </EntityType>
         <EntityType Name="C_Tamanos">
           <Key>
             <PropertyRef Name="IdTamanos" />
@@ -104,16 +97,6 @@
           </Key>
           <Property Name="IdTemperamentos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="temperamento" Type="varchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="C_Usuarios">
-          <Key>
-            <PropertyRef Name="IdUsuario" />
-          </Key>
-          <Property Name="IdUsuario" Type="int" Nullable="false" />
-          <Property Name="IdRol" Type="int" />
-          <Property Name="Usuario" Type="varchar" MaxLength="20" />
-          <Property Name="Contrasena" Type="varchar" MaxLength="200" />
-          <Property Name="FechaCreacion" Type="datetime" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -269,18 +252,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_C_Usuarios_C_Roles">
-          <End Role="C_Roles" Type="Self.C_Roles" Multiplicity="0..1" />
-          <End Role="C_Usuarios" Type="Self.C_Usuarios" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="C_Roles">
-              <PropertyRef Name="IdRol" />
-            </Principal>
-            <Dependent Role="C_Usuarios">
-              <PropertyRef Name="IdRol" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_dbo_UserRoles_dbo_Roles_Role_RoleId">
           <End Role="Roles" Type="Self.Roles" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -357,7 +328,11 @@
         </Function>
         <Function Name="sp_ReportePersonas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <EntityContainer Name="Paw_Log_DBModelStoreContainer">
+        <Function Name="sp_UsersInRoles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdUser" Type="int" Mode="In" />
+          <Parameter Name="IdRol" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="PAW_LOG_DBModelStoreContainer">
           <EntitySet Name="C_Adopciones" EntityType="Self.C_Adopciones" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="C_Animales" EntityType="Self.C_Animales" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="C_Canton" EntityType="Self.C_Canton" Schema="dbo" store:Type="Tables" />
@@ -365,10 +340,8 @@
           <EntitySet Name="C_Distrito" EntityType="Self.C_Distrito" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="C_Persona" EntityType="Self.C_Persona" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="C_Provincia" EntityType="Self.C_Provincia" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="C_Roles" EntityType="Self.C_Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="C_Tamanos" EntityType="Self.C_Tamanos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="C_Temperamentos" EntityType="Self.C_Temperamentos" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="C_Usuarios" EntityType="Self.C_Usuarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
@@ -413,10 +386,6 @@
             <End Role="C_Provincia" EntitySet="C_Provincia" />
             <End Role="C_Persona" EntitySet="C_Persona" />
           </AssociationSet>
-          <AssociationSet Name="FK_C_Usuarios_C_Roles" Association="Self.FK_C_Usuarios_C_Roles">
-            <End Role="C_Roles" EntitySet="C_Roles" />
-            <End Role="C_Usuarios" EntitySet="C_Usuarios" />
-          </AssociationSet>
           <AssociationSet Name="FK_dbo_UserRoles_dbo_Roles_Role_RoleId" Association="Self.FK_dbo_UserRoles_dbo_Roles_Role_RoleId">
             <End Role="Roles" EntitySet="Roles" />
             <End Role="UsersInRoles" EntitySet="UsersInRoles" />
@@ -426,10 +395,11 @@
             <End Role="UsersInRoles" EntitySet="UsersInRoles" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Paw_Log_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="PAW_LOG_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="C_Adopciones">
           <Key>
             <PropertyRef Name="IdAdopcion" />
@@ -527,14 +497,6 @@
           <NavigationProperty Name="C_Canton" Relationship="Self.FK_C_Canton_C_Provincia" FromRole="C_Provincia" ToRole="C_Canton" />
           <NavigationProperty Name="C_Persona" Relationship="Self.FK_C_Persona_C_Provincia" FromRole="C_Provincia" ToRole="C_Persona" />
         </EntityType>
-        <EntityType Name="C_Roles">
-          <Key>
-            <PropertyRef Name="IdRol" />
-          </Key>
-          <Property Name="IdRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Roles" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="C_Usuarios" Relationship="Self.FK_C_Usuarios_C_Roles" FromRole="C_Roles" ToRole="C_Usuarios" />
-        </EntityType>
         <EntityType Name="C_Tamanos">
           <Key>
             <PropertyRef Name="IdTamanos" />
@@ -551,16 +513,13 @@
           <Property Name="temperamento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="C_Animales" Relationship="Self.FK_C_Animales_C_Temperamentos" FromRole="C_Temperamentos" ToRole="C_Animales" />
         </EntityType>
-        <EntityType Name="C_Usuarios">
+        <EntityType Name="Roles">
           <Key>
-            <PropertyRef Name="IdUsuario" />
+            <PropertyRef Name="RoleId" />
           </Key>
-          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
-          <Property Name="IdRol" Type="Int32" />
-          <Property Name="Usuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Contrasena" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="C_Roles" Relationship="Self.FK_C_Usuarios_C_Roles" FromRole="C_Usuarios" ToRole="C_Roles" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Users" Relationship="Self.UsersInRoles" FromRole="Roles" ToRole="Users" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -571,6 +530,16 @@
           <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Roles" Relationship="Self.UsersInRoles" FromRole="Users" ToRole="Roles" />
         </EntityType>
         <Association Name="FK_C_Adopciones_C_Animales">
           <End Role="C_Animales" Type="Self.C_Animales" Multiplicity="0..1" />
@@ -692,17 +661,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_C_Usuarios_C_Roles">
-          <End Role="C_Roles" Type="Self.C_Roles" Multiplicity="0..1" />
-          <End Role="C_Usuarios" Type="Self.C_Usuarios" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="C_Roles">
-              <PropertyRef Name="IdRol" />
-            </Principal>
-            <Dependent Role="C_Usuarios">
-              <PropertyRef Name="IdRol" />
-            </Dependent>
-          </ReferentialConstraint>
+        <Association Name="UsersInRoles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
         </Association>
         <EntityContainer Name="BDContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="C_Adopciones" EntityType="Self.C_Adopciones" />
@@ -712,11 +673,11 @@
           <EntitySet Name="C_Distrito" EntityType="Self.C_Distrito" />
           <EntitySet Name="C_Persona" EntityType="Self.C_Persona" />
           <EntitySet Name="C_Provincia" EntityType="Self.C_Provincia" />
-          <EntitySet Name="C_Roles" EntityType="Self.C_Roles" />
           <EntitySet Name="C_Tamanos" EntityType="Self.C_Tamanos" />
           <EntitySet Name="C_Temperamentos" EntityType="Self.C_Temperamentos" />
-          <EntitySet Name="C_Usuarios" EntityType="Self.C_Usuarios" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
           <AssociationSet Name="FK_C_Adopciones_C_Animales" Association="Self.FK_C_Adopciones_C_Animales">
             <End Role="C_Animales" EntitySet="C_Animales" />
             <End Role="C_Adopciones" EntitySet="C_Adopciones" />
@@ -757,9 +718,9 @@
             <End Role="C_Provincia" EntitySet="C_Provincia" />
             <End Role="C_Persona" EntitySet="C_Persona" />
           </AssociationSet>
-          <AssociationSet Name="FK_C_Usuarios_C_Roles" Association="Self.FK_C_Usuarios_C_Roles">
-            <End Role="C_Roles" EntitySet="C_Roles" />
-            <End Role="C_Usuarios" EntitySet="C_Usuarios" />
+          <AssociationSet Name="UsersInRoles" Association="Self.UsersInRoles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Users" EntitySet="Users" />
           </AssociationSet>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -777,42 +738,40 @@
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(Paw_Log_DBModel.sp_helpdiagramdefinition_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(Paw_Log_DBModel.sp_helpdiagrams_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_renamediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="new_diagramname" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_upgraddiagrams" />
-          <FunctionImport Name="sp_ReporteAdopciones" ReturnType="Collection(Paw_Log_DBModel.sp_ReporteAdopciones_Result)">
-          <Parameter Name="IdCedula" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_ReporteCasaCuna" ReturnType="Collection(Paw_Log_DBModel.sp_ReporteCasaCuna_Result)">
-          <Parameter Name="IdProvincias" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_ReportePersonas" ReturnType="Collection(Paw_Log_DBModel.sp_ReportePersonas_Result)" />
-          <EntitySet Name="Roles" EntityType="Paw_Log_DBModel.Roles" />
-          <EntitySet Name="Users" EntityType="Paw_Log_DBModel.Users" />
-          <AssociationSet Name="UsersInRoles" Association="Paw_Log_DBModel.UsersInRoles">
-            <End Role="Roles" EntitySet="Roles" />
-            <End Role="Users" EntitySet="Users" />
-          </AssociationSet>
           <FunctionImport Name="sp_getRolesForUser" ReturnType="Collection(String)">
             <Parameter Name="userName" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_getUsuariosRole" ReturnType="Collection(String)">
             <Parameter Name="roleName" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(PAW_LOG_DBModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(PAW_LOG_DBModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="sp_isUserInRole" ReturnType="Collection(Boolean)">
             <Parameter Name="userName" Mode="In" Type="String" />
             <Parameter Name="roleName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ReporteAdopciones" ReturnType="Collection(PAW_LOG_DBModel.sp_ReporteAdopciones_Result)">
+            <Parameter Name="IdCedula" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ReporteCasaCuna" ReturnType="Collection(PAW_LOG_DBModel.sp_ReporteCasaCuna_Result)">
+            <Parameter Name="IdProvincias" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ReportePersonas" ReturnType="Collection(PAW_LOG_DBModel.sp_ReportePersonas_Result)" />
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="sp_UsersInRoles" ReturnType="Collection(PAW_LOG_DBModel.sp_UsersInRoles_Result)">
+            <Parameter Name="IdUser" Mode="In" Type="Int32" />
+            <Parameter Name="IdRol" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
@@ -861,36 +820,17 @@
           <Property Type="String" Name="direccion" Nullable="true" MaxLength="200" />
           <Property Type="Int32" Name="Edad" Nullable="true" />
         </ComplexType>
-        <EntityType Name="Roles">
-          <Key>
-            <PropertyRef Name="RoleId" />
-          </Key>
-          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RoleName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Users" Relationship="Paw_Log_DBModel.UsersInRoles" FromRole="Roles" ToRole="Users" />
-        </EntityType>
-        <EntityType Name="Users">
-          <Key>
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Roles" Relationship="Paw_Log_DBModel.UsersInRoles" FromRole="Users" ToRole="Roles" />
-        </EntityType>
-        <Association Name="UsersInRoles">
-          <End Type="Paw_Log_DBModel.Roles" Role="Roles" Multiplicity="*" />
-          <End Type="Paw_Log_DBModel.Users" Role="Users" Multiplicity="*" />
-        </Association>
+        <ComplexType Name="sp_UsersInRoles_Result">
+          <Property Type="String" Name="msjRespuesta" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Paw_Log_DBModelStoreContainer" CdmEntityContainer="BDContext">
+        <EntityContainerMapping StorageEntityContainer="PAW_LOG_DBModelStoreContainer" CdmEntityContainer="BDContext">
           <EntitySetMapping Name="C_Adopciones">
-            <EntityTypeMapping TypeName="Paw_Log_DBModel.C_Adopciones">
+            <EntityTypeMapping TypeName="PAW_LOG_DBModel.C_Adopciones">
               <MappingFragment StoreEntitySet="C_Adopciones">
                 <ScalarProperty Name="IdAdopcion" ColumnName="IdAdopcion" />
                 <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
@@ -900,7 +840,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="C_Animales">
-            <EntityTypeMapping TypeName="Paw_Log_DBModel.C_Animales">
+            <EntityTypeMapping TypeName="PAW_LOG_DBModel.C_Animales">
               <MappingFragment StoreEntitySet="C_Animales">
                 <ScalarProperty Name="IdAnimal" ColumnName="IdAnimal" />
                 <ScalarProperty Name="IdTamano" ColumnName="IdTamano" />
@@ -917,7 +857,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="C_Canton">
-            <EntityTypeMapping TypeName="Paw_Log_DBModel.C_Canton">
+            <EntityTypeMapping TypeName="PAW_LOG_DBModel.C_Canton">
               <MappingFragment StoreEntitySet="C_Canton">
                 <ScalarProperty Name="IdCanton" ColumnName="IdCanton" />
                 <ScalarProperty Name="NombreCanton" ColumnName="NombreCanton" />
@@ -926,7 +866,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="C_CasaCuna">
-            <EntityTypeMapping TypeName="Paw_Log_DBModel.C_CasaCuna">
+            <EntityTypeMapping TypeName="PAW_LOG_DBModel.C_CasaCuna">
               <MappingFragment StoreEntitySet="C_CasaCuna">
                 <ScalarProperty Name="IdCasaCuna" ColumnName="IdCasaCuna" />
                 <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
@@ -939,7 +879,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="C_Distrito">
-            <EntityTypeMapping TypeName="Paw_Log_DBModel.C_Distrito">
+            <EntityTypeMapping TypeName="PAW_LOG_DBModel.C_Distrito">
               <MappingFragment StoreEntitySet="C_Distrito">
                 <ScalarProperty Name="IdDistrito" ColumnName="IdDistrito" />
                 <ScalarProperty Name="NombreDistrito" ColumnName="NombreDistrito" />
@@ -948,7 +888,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="C_Persona">
-            <EntityTypeMapping TypeName="Paw_Log_DBModel.C_Persona">
+            <EntityTypeMapping TypeName="PAW_LOG_DBModel.C_Persona">
               <MappingFragment StoreEntitySet="C_Persona">
                 <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
                 <ScalarProperty Name="IdDistrito" ColumnName="IdDistrito" />
@@ -968,23 +908,15 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="C_Provincia">
-            <EntityTypeMapping TypeName="Paw_Log_DBModel.C_Provincia">
+            <EntityTypeMapping TypeName="PAW_LOG_DBModel.C_Provincia">
               <MappingFragment StoreEntitySet="C_Provincia">
                 <ScalarProperty Name="IdProvincia" ColumnName="IdProvincia" />
                 <ScalarProperty Name="NombreProvincia" ColumnName="NombreProvincia" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="C_Roles">
-            <EntityTypeMapping TypeName="Paw_Log_DBModel.C_Roles">
-              <MappingFragment StoreEntitySet="C_Roles">
-                <ScalarProperty Name="IdRol" ColumnName="IdRol" />
-                <ScalarProperty Name="Roles" ColumnName="Roles" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="C_Tamanos">
-            <EntityTypeMapping TypeName="Paw_Log_DBModel.C_Tamanos">
+            <EntityTypeMapping TypeName="PAW_LOG_DBModel.C_Tamanos">
               <MappingFragment StoreEntitySet="C_Tamanos">
                 <ScalarProperty Name="IdTamanos" ColumnName="IdTamanos" />
                 <ScalarProperty Name="tamanos" ColumnName="tamanos" />
@@ -992,26 +924,23 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="C_Temperamentos">
-            <EntityTypeMapping TypeName="Paw_Log_DBModel.C_Temperamentos">
+            <EntityTypeMapping TypeName="PAW_LOG_DBModel.C_Temperamentos">
               <MappingFragment StoreEntitySet="C_Temperamentos">
                 <ScalarProperty Name="IdTemperamentos" ColumnName="IdTemperamentos" />
                 <ScalarProperty Name="temperamento" ColumnName="temperamento" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="C_Usuarios">
-            <EntityTypeMapping TypeName="Paw_Log_DBModel.C_Usuarios">
-              <MappingFragment StoreEntitySet="C_Usuarios">
-                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
-                <ScalarProperty Name="IdRol" ColumnName="IdRol" />
-                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
-                <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
-                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="PAW_LOG_DBModel.Roles">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="Paw_Log_DBModel.sysdiagrams">
+            <EntityTypeMapping TypeName="PAW_LOG_DBModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -1021,20 +950,40 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Paw_Log_DBModel.Store.sp_alterdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Paw_Log_DBModel.Store.sp_creatediagram" />
-          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Paw_Log_DBModel.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Paw_Log_DBModel.Store.sp_helpdiagramdefinition">
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="PAW_LOG_DBModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="UsersInRoles" TypeName="PAW_LOG_DBModel.UsersInRoles" StoreEntitySet="UsersInRoles">
+            <EndProperty Name="Roles">
+              <ScalarProperty Name="RoleId" ColumnName="Role_RoleId" />
+            </EndProperty>
+            <EndProperty Name="Users">
+              <ScalarProperty Name="UserId" ColumnName="User_UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="PAW_LOG_DBModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="PAW_LOG_DBModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="PAW_LOG_DBModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_getRolesForUser" FunctionName="PAW_LOG_DBModel.Store.sp_getRolesForUser" />
+          <FunctionImportMapping FunctionImportName="sp_getUsuariosRole" FunctionName="PAW_LOG_DBModel.Store.sp_getUsuariosRole" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="PAW_LOG_DBModel.Store.sp_helpdiagramdefinition">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="Paw_Log_DBModel.sp_helpdiagramdefinition_Result">
+              <ComplexTypeMapping TypeName="PAW_LOG_DBModel.sp_helpdiagramdefinition_Result">
                 <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Paw_Log_DBModel.Store.sp_helpdiagrams">
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="PAW_LOG_DBModel.Store.sp_helpdiagrams">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="Paw_Log_DBModel.sp_helpdiagrams_Result">
+              <ComplexTypeMapping TypeName="PAW_LOG_DBModel.sp_helpdiagrams_Result">
                 <ScalarProperty Name="Database" ColumnName="Database" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -1043,11 +992,11 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Paw_Log_DBModel.Store.sp_renamediagram" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Paw_Log_DBModel.Store.sp_upgraddiagrams" />
-          <FunctionImportMapping FunctionImportName="sp_ReporteAdopciones" FunctionName="Paw_Log_DBModel.Store.sp_ReporteAdopciones">
+          <FunctionImportMapping FunctionImportName="sp_isUserInRole" FunctionName="PAW_LOG_DBModel.Store.sp_isUserInRole" />
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="PAW_LOG_DBModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_ReporteAdopciones" FunctionName="PAW_LOG_DBModel.Store.sp_ReporteAdopciones">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="Paw_Log_DBModel.sp_ReporteAdopciones_Result">
+              <ComplexTypeMapping TypeName="PAW_LOG_DBModel.sp_ReporteAdopciones_Result">
                 <ScalarProperty Name="cedula" ColumnName="cedula" />
                 <ScalarProperty Name="nombrePersona" ColumnName="nombrePersona" />
                 <ScalarProperty Name="primerApellido" ColumnName="primerApellido" />
@@ -1061,9 +1010,9 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_ReporteCasaCuna" FunctionName="Paw_Log_DBModel.Store.sp_ReporteCasaCuna">
+          <FunctionImportMapping FunctionImportName="sp_ReporteCasaCuna" FunctionName="PAW_LOG_DBModel.Store.sp_ReporteCasaCuna">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="Paw_Log_DBModel.sp_ReporteCasaCuna_Result">
+              <ComplexTypeMapping TypeName="PAW_LOG_DBModel.sp_ReporteCasaCuna_Result">
                 <ScalarProperty Name="nombrePersona" ColumnName="nombrePersona" />
                 <ScalarProperty Name="primerApellido" ColumnName="primerApellido" />
                 <ScalarProperty Name="segundoApellido" ColumnName="segundoApellido" />
@@ -1076,9 +1025,9 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_ReportePersonas" FunctionName="Paw_Log_DBModel.Store.sp_ReportePersonas">
+          <FunctionImportMapping FunctionImportName="sp_ReportePersonas" FunctionName="PAW_LOG_DBModel.Store.sp_ReportePersonas">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="Paw_Log_DBModel.sp_ReportePersonas_Result">
+              <ComplexTypeMapping TypeName="PAW_LOG_DBModel.sp_ReportePersonas_Result">
                 <ScalarProperty Name="nombrePersona" ColumnName="nombrePersona" />
                 <ScalarProperty Name="primerApellido" ColumnName="primerApellido" />
                 <ScalarProperty Name="segundoApellido" ColumnName="segundoApellido" />
@@ -1092,35 +1041,14 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="Roles">
-            <EntityTypeMapping TypeName="Paw_Log_DBModel.Roles">
-              <MappingFragment StoreEntitySet="Roles">
-                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
-                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="Paw_Log_DBModel.Users">
-              <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <AssociationSetMapping Name="UsersInRoles" TypeName="Paw_Log_DBModel.UsersInRoles" StoreEntitySet="UsersInRoles">
-            <EndProperty Name="Users">
-              <ScalarProperty Name="UserId" ColumnName="User_UserId" />
-            </EndProperty>
-            <EndProperty Name="Roles">
-              <ScalarProperty Name="RoleId" ColumnName="Role_RoleId" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <FunctionImportMapping FunctionImportName="sp_getRolesForUser" FunctionName="Paw_Log_DBModel.Store.sp_getRolesForUser" />
-          <FunctionImportMapping FunctionImportName="sp_getUsuariosRole" FunctionName="Paw_Log_DBModel.Store.sp_getUsuariosRole" />
-          <FunctionImportMapping FunctionImportName="sp_isUserInRole" FunctionName="Paw_Log_DBModel.Store.sp_isUserInRole" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="PAW_LOG_DBModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="sp_UsersInRoles" FunctionName="PAW_LOG_DBModel.Store.sp_UsersInRoles" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PAW_LOG_DBModel.sp_UsersInRoles_Result">
+                <ScalarProperty Name="msjRespuesta" ColumnName="msjRespuesta" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1136,7 +1064,7 @@
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
