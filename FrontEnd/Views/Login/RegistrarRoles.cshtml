@@ -16,7 +16,7 @@
         <br />
         <br />
         <br />
-      
+
     </div>
 
 
@@ -58,48 +58,42 @@
                 </div>
             </div>
             <br />
-         }
-            <hr />
-            <div>
-                @Html.ActionLink("Regresar al Inicio", "Index", "Home")
-            </div>
+        }
+        <hr />
+        <div>
+            @Html.ActionLink("Regresar al Inicio", "Index", "Home")
+        </div>
 
-        </form>
+    </form>
 </div>
-
-
 
 @* SCRIPT DE SWEETALERT PARA ELIMINAR UN REGISTRO MEDIANTE VENTANA MODAL *@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
-
-
 <script>
     function Button1() {
         event.preventDefault(); // prevent form submit
-
         var form = document.forms["myForm"]; // storing the form
-
         swal({
-            title: "Desea confirmar el rol?",
-            text: "Confirmación de rol",
+            title: "Dese confirmar el rol?",
+            text: "Asignacion de rol",
             showCancelButton: true,
-            icon: "info",
+            icon: "warning",
             buttons: true,
             dangerMode: true,
         })
             .then((willDelete) => {
                 if (willDelete) {
                     form.submit();
-                    swal("Solicitud enviada", "Se ha solicitado asignar un rol", "success");
+                    swal("Confirmado", "Asignacion de rol exitosa", "success");
                 } else {
-                    swal("Cancelado", "El rol no se ha asignado", "error");
+                    swal("Cancelado", "No se ha asignado el rol!", "error");
                 }
             });
     }
-    }
 </script>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
