@@ -55,7 +55,7 @@ namespace FrontEnd.Controllers
 
         public ActionResult LogOut()
         {
-            //int userId = (int)Session["userID"];
+            int userId = (int)Session["userID"];
             Session.Clear();
             Session.Abandon();
 
@@ -123,8 +123,9 @@ namespace FrontEnd.Controllers
             usuario.ListaUsuarios = userDAL.getUsers();
 
             usuario.ListaRoles = userDAL.getRoles();
-            
-              
+
+
+            TempData["Mensaje"] = data;
 
             return RedirectToAction("RegistrarRoles", "Login");
 

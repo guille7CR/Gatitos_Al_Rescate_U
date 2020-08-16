@@ -12,10 +12,16 @@
 
     <div style="margin-top: 12%; margin-left: 10%; margin-right: 10%; text-align:center">
 
+
+
         <h1>Registro de Roles</h1>
         <br />
         <br />
         <br />
+        <div class="alert alert-info alert-dismissible col-12" id="dataInfo" style="display:none">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>¡Información!</strong> @TempData["Mensaje"]
+        </div>
 
     </div>
 
@@ -53,7 +59,7 @@
 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Asignar Rol" class="btn btn-primary" onclick="Button1()" />
+                        <input type="submit" value="Asignar Rol" class="btn btn-primary" @*onclick="Button1()"*@ />
                     </div>
                 </div>
             </div>
@@ -67,8 +73,26 @@
     </form>
 </div>
 
+<script type="text/javascript">
+    $(document).ready(function () {
+        var success = @((TempData["Mensaje"]!=null).ToString().ToLower());
+        console.log(success);
+
+        if (success == true) {
+
+            $('#dataInfo').show();
+
+            setTimeout(function () {
+                $('#dataInfo').fadeOut('slow');
+            }, 2000);
+        } else {
+            $('#dataInfo').hide();
+        }
+    });
+</script>
+
 @* SCRIPT DE SWEETALERT PARA ELIMINAR UN REGISTRO MEDIANTE VENTANA MODAL *@
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+@*<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
 <script>
@@ -92,7 +116,7 @@
                 }
             });
     }
-</script>
+</script>*@
 
 
 @section Scripts {
