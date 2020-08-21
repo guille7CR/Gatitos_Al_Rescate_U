@@ -11,9 +11,9 @@
 
 
     <h1>Listado de Adopciones</h1>
-
+    <br />
     <p>
-        @Html.ActionLink("Registrar Nueva Adopción", "Create")&nbsp;&nbsp;
+        @Html.ActionLink("Registrar Adopción", "Create")&nbsp;&nbsp;
         <i class="fas fa-plus-circle" style="font-size:25px; color:#f4623a"></i>
     </p>
     <div class="form-group col-sm-3">
@@ -23,7 +23,7 @@
     </div>
     <br>
 
-    <table class="table" id="lista_Adopciones">
+    <table class="table table-hover" id="lista_Adopciones">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.IdPersona)
@@ -79,3 +79,8 @@
 
 @* Script para el search del Index que apunta al archivo de js *@
 <script src="~/Scripts/Search.js"></script>
+
+<br />
+<br />
+<br />
+<br />

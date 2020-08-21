@@ -34,7 +34,7 @@
             <th>
                 Padecimientos
             </th>
-            
+
         </tr>
 
         @foreach (var item in Model)
@@ -80,7 +80,15 @@
     <a href="@Url.Action("Report", new {id="Excel"})">Descargar Excel |</a>
     <a href="@Url.Action("Report", new {id="Word"})">Descargar Word |</a>
     <a href="@Url.Action("Report", new {id="Image"})">Descargar Imagen</a>
+
+    <hr />
+    <div>
+        @Html.ActionLink("Regresar", "C_ReportesIndex")
+    </div>
+
 </div>
+
+
 
 <br />
 <br />

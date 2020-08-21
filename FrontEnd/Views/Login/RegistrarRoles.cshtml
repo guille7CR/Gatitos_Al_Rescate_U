@@ -73,6 +73,11 @@
     </form>
 </div>
 
+<br />
+<br />
+<br />
+<br />
+
 <script type="text/javascript">
     $(document).ready(function () {
         var success = @((TempData["Mensaje"]!=null).ToString().ToLower());
@@ -95,28 +100,28 @@
 @*<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
-<script>
-    function Button1() {
-        event.preventDefault(); // prevent form submit
-        var form = document.forms["myForm"]; // storing the form
-        swal({
-            title: "Dese confirmar el rol?",
-            text: "Asignacion de rol",
-            showCancelButton: true,
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-        })
-            .then((willDelete) => {
-                if (willDelete) {
-                    form.submit();
-                    swal("Confirmado", "Asignacion de rol exitosa", "success");
-                } else {
-                    swal("Cancelado", "No se ha asignado el rol!", "error");
-                }
-            });
-    }
-</script>*@
+    <script>
+        function Button1() {
+            event.preventDefault(); // prevent form submit
+            var form = document.forms["myForm"]; // storing the form
+            swal({
+                title: "Dese confirmar el rol?",
+                text: "Asignacion de rol",
+                showCancelButton: true,
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        form.submit();
+                        swal("Confirmado", "Asignacion de rol exitosa", "success");
+                    } else {
+                        swal("Cancelado", "No se ha asignado el rol!", "error");
+                    }
+                });
+        }
+    </script>*@
 
 
 @section Scripts {

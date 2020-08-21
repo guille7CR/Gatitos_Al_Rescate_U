@@ -3,20 +3,20 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 }
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <div style="margin-top: 12%; margin-left: 10%; margin-right: 10%">
     <h1>Listado Casas Cuna</h1>
-
+    <br />
     <p>
-        @Html.ActionLink("Registrar Nuevo", "Create")&nbsp;&nbsp;
+        @Html.ActionLink("Registrar Casa Cuna", "Create")&nbsp;&nbsp;
         <i class="fas fa-plus-circle" style="font-size:25px; color:#f4623a"></i>
     </p>
 
-     <div class="form-group col-sm-3">
+    <div class="form-group col-sm-3">
 
         <label>Buscar:</label><br />
         <input type="text" onkeyup="Search_Gridview(this, 'lista_casaCunas')">
@@ -51,46 +51,46 @@
 
         @foreach (var item in Model)
         {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.C_Persona.nombrePersona)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Metros)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PropiedadCercada)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OtrasMascotas)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CapacidadDisponible)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DescripcionPropiedad)
-        </td>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.C_Persona.nombrePersona)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Metros)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PropiedadCercada)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OtrasMascotas)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CapacidadDisponible)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DescripcionPropiedad)
+                </td>
 
-        <td style="width:120px">
-            <a href="@Url.Action("Edit", "C_CasaCuna", new {id=item.IdCasaCuna})">
+                <td style="width:120px">
+                    <a href="@Url.Action("Edit", "C_CasaCuna", new {id=item.IdCasaCuna})">
 
-                <i class="fas fa-edit" style="font-size:18px"></i>
-            </a>&nbsp;
+                        <i class="fas fa-edit" style="font-size:18px"></i>
+                    </a>&nbsp;
 
-            <a href="@Url.Action("Details", "C_CasaCuna", new {id=item.IdCasaCuna})">
+                    <a href="@Url.Action("Details", "C_CasaCuna", new {id=item.IdCasaCuna})">
 
-                <i class="fas fa-eye" style="font-size:18px"></i>
-            </a>&nbsp;
+                        <i class="fas fa-eye" style="font-size:18px"></i>
+                    </a>&nbsp;
 
-            <a href="@Url.Action("Delete", "C_CasaCuna", new {id=item.IdCasaCuna})">
+                    <a href="@Url.Action("Delete", "C_CasaCuna", new {id=item.IdCasaCuna})">
 
-                <i class="fas fa-trash-alt" style="font-size:18px"></i>
-            </a>&nbsp;
+                        <i class="fas fa-trash-alt" style="font-size:18px"></i>
+                    </a>&nbsp;
 
-        </td>
+                </td>
 
 
-    </tr>
+            </tr>
         }
 
     </table>
@@ -99,3 +99,8 @@
 
 @* Script para el search del Index que apunta al archivo de js *@
 <script src="~/Scripts/Search.js"></script>
+
+<br />
+<br />
+<br />
+<br />
