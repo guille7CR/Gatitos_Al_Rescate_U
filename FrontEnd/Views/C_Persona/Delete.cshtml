@@ -20,7 +20,7 @@
                 <dd>
                     @Html.DisplayFor(model => model.C_Provincia.NombreProvincia)
                 </dd>
-
+                <br>
                 <dt style="font-weight:bold">
                     @Html.DisplayNameFor(model => model.IdDistrito)
                 </dt>
@@ -28,7 +28,7 @@
                 <dd>
                     @Html.DisplayFor(model => model.C_Distrito.NombreDistrito)
                 </dd>
-
+                <br>
                 <dt style="font-weight:bold">
                     @Html.DisplayNameFor(model => model.IdCanton)
                 </dt>
@@ -36,7 +36,7 @@
                 <dd>
                     @Html.DisplayFor(model => model.C_Canton.NombreCanton)
                 </dd>
-
+                <br>
                 <dt style="font-weight:bold">
                     @Html.DisplayNameFor(model => model.nombrePersona)
                 </dt>
@@ -44,7 +44,7 @@
                 <dd>
                     @Html.DisplayFor(model => model.nombrePersona)
                 </dd>
-
+                <br>
                 <dt style="font-weight:bold">
                     @Html.DisplayNameFor(model => model.primerApellido)
                 </dt>
@@ -52,7 +52,7 @@
                 <dd>
                     @Html.DisplayFor(model => model.primerApellido)
                 </dd>
-
+                <br>
                 <dt style="font-weight:bold">
                     @Html.DisplayNameFor(model => model.segundoApellido)
                 </dt>
@@ -60,7 +60,7 @@
                 <dd>
                     @Html.DisplayFor(model => model.segundoApellido)
                 </dd>
-
+                <br>
                 <dt style="font-weight:bold">
                     @Html.DisplayNameFor(model => model.cedula)
                 </dt>
@@ -68,7 +68,7 @@
                 <dd>
                     @Html.DisplayFor(model => model.cedula)
                 </dd>
-
+                <br>
                 <dt style="font-weight:bold">
                     @Html.DisplayNameFor(model => model.correo)
                 </dt>
@@ -76,7 +76,7 @@
                 <dd>
                     @Html.DisplayFor(model => model.correo)
                 </dd>
-
+                <br>
                 <dt style="font-weight:bold">
                     @Html.DisplayNameFor(model => model.sexo)
                 </dt>
@@ -84,7 +84,7 @@
                 <dd>
                     @Html.DisplayFor(model => model.sexo)
                 </dd>
-
+                <br>
                 <dt style="font-weight:bold">
                     @Html.DisplayNameFor(model => model.telefono)
                 </dt>
@@ -92,7 +92,7 @@
                 <dd>
                     @Html.DisplayFor(model => model.telefono)
                 </dd>
-
+                <br>
                 <dt style="font-weight:bold">
                     @Html.DisplayNameFor(model => model.direccion)
                 </dt>
@@ -100,7 +100,7 @@
                 <dd>
                     @Html.DisplayFor(model => model.direccion)
                 </dd>
-
+                <br>
                 <dt style="font-weight:bold">
                     @Html.DisplayNameFor(model => model.estadoCivil)
                 </dt>
@@ -108,7 +108,7 @@
                 <dd>
                     @Html.DisplayFor(model => model.estadoCivil)
                 </dd>
-
+                <br>
                 <dt style="font-weight:bold">
                     @Html.DisplayNameFor(model => model.fechaNacimiento)
                 </dt>
@@ -116,7 +116,7 @@
                 <dd>
                     @Html.DisplayFor(model => model.fechaNacimiento)
                 </dd>
-
+                <br>
             </dl>
             @using (Html.BeginForm())
             {
@@ -134,6 +134,7 @@
             }
         </div>
     </form>
+    <br /><br /><br />
 
         @* SCRIPT DE SWEETALERT PARA ELIMINAR UN REGISTRO MEDIANTE VENTANA MODAL *@
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

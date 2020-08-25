@@ -19,7 +19,7 @@
 
             <div class="form-group" style="font-weight:bold">
                 @Html.LabelFor(model => model.IdPersona, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+                <div class="col-md-6">
                     @Html.EditorFor(model => model.IdPersona, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.IdPersona, "", new { @class = "text-danger" })
                 </div>
@@ -27,7 +27,7 @@
 
             <div class="form-group" style="font-weight:bold">
                 @Html.LabelFor(model => model.Metros, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+                <div class="col-md-6">
                     @Html.EditorFor(model => model.Metros, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Metros, "", new { @class = "text-danger" })
                 </div>
@@ -35,7 +35,7 @@
 
             <div class="form-group" style="font-weight:bold">
                 @Html.LabelFor(model => model.PropiedadCercada, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+                <div class="col-md-6">
                     <div class="checkbox">
                         @Html.EditorFor(model => model.PropiedadCercada)
                         @Html.ValidationMessageFor(model => model.PropiedadCercada, "", new { @class = "text-danger" })
@@ -45,7 +45,7 @@
 
             <div class="form-group" style="font-weight:bold">
                 @Html.LabelFor(model => model.OtrasMascotas, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+                <div class="col-md-6">
                     @Html.EditorFor(model => model.OtrasMascotas, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.OtrasMascotas, "", new { @class = "text-danger" })
                 </div>
@@ -53,7 +53,7 @@
 
             <div class="form-group" style="font-weight:bold">
                 @Html.LabelFor(model => model.CapacidadDisponible, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+                <div class="col-md-6">
                     @Html.EditorFor(model => model.CapacidadDisponible, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.CapacidadDisponible, "", new { @class = "text-danger" })
                 </div>
@@ -61,7 +61,7 @@
 
             <div class="form-group" style="font-weight:bold">
                 @Html.LabelFor(model => model.DescripcionPropiedad, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+                <div class="col-md-6">
                     @Html.EditorFor(model => model.DescripcionPropiedad, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.DescripcionPropiedad, "", new { @class = "text-danger" })
                 </div>
@@ -83,6 +83,7 @@
         }
 
     </form>
+    <br /><br /><br />
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

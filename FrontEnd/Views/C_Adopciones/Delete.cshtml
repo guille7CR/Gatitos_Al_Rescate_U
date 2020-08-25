@@ -11,31 +11,32 @@
         <h1>Eliminar Adopción</h1>
 
         <hr />    <dl class="dl-horizontal">
-            <dt style="font-weight:bold">
-                @Html.DisplayNameFor(model => model.IdPersona)
-            </dt>
+    <dt style="font-weight:bold">
+        @Html.DisplayNameFor(model => model.IdPersona)
+    </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.C_Persona.nombrePersona)
-            </dd>
+    <dd>
+        @Html.DisplayFor(model => model.C_Persona.nombrePersona)
+    </dd>
+    <br>
 
-            <dt style="font-weight:bold">
-                @Html.DisplayNameFor(model => model.FechaAdopcion)
-            </dt>
+    <dt style="font-weight:bold">
+        @Html.DisplayNameFor(model => model.FechaAdopcion)
+    </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.FechaAdopcion)
-            </dd>
+    <dd>
+        @Html.DisplayFor(model => model.FechaAdopcion)
+    </dd>
+    <br>
+    <dt style="font-weight:bold">
+        @Html.DisplayNameFor(model => model.IdAnimal)
+    </dt>
 
-            <dt style="font-weight:bold">
-                @Html.DisplayNameFor(model => model.IdAnimal)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.C_Animales.nombre)
-            </dd>
-
-        </dl>
+    <dd>
+        @Html.DisplayFor(model => model.C_Animales.nombre)
+    </dd>
+    <br>
+</dl>
 
         @using (Html.BeginForm())
         {
@@ -53,6 +54,7 @@
         }
     </div>
 </form>
+<br /><br /><br />
 
 
 @* SCRIPT DE SWEETALERT PARA ELIMINAR UN REGISTRO MEDIANTE VENTANA MODAL *@
