@@ -17,17 +17,18 @@
                     <li class="nav-item">@Html.ActionLink("Personas", "Index", "C_Persona") </li>
                     @:&nbsp;&nbsp;
                     <li class="nav-item col-sm-auto">@Html.ActionLink("Casa Cuna", "Index", "C_CasaCuna") </li>
-                    @:&nbsp;&nbsp;
+                   
                     <li class="nav-item col-sm-auto">@Html.ActionLink("Roles", "RegistrarRoles", "Login") </li>
 
                 }
             </ul>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 
 
             <p class="nav-item col-md-4" style="color:#808080;font-weight:bold">
-                Usuario | @Session["UserName"]&nbsp;&nbsp;
+                Usuario | @Session["UserName"]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
                 <i class="fas fa-user-circle" style="font-size:30px; color:#f4623a;"></i>
             </p>&nbsp;&nbsp;
             <a href="~/Login/LogOut">
