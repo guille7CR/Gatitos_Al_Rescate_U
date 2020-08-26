@@ -32,6 +32,7 @@ namespace FrontEnd.Controllers
                 MailMessage correo = new MailMessage();
                 correo.From = new MailAddress("gramirez7CR@gmail.com");
                 correo.To.Add("gramirez7CR@gmail.com");
+                correo.CC.Add(contactoCorreo);
                 correo.Subject = asunto;
                 String ruta = Server.MapPath("");
                 fichero.SaveAs(Server.MapPath("/") + "/Cargas/" + fichero.FileName);
