@@ -4,10 +4,10 @@
         <a class="navbar-brand js-scroll-trigger" href="#page-top" style="font-size:40px">Gatitos al Rescate</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;
 
             <ul class="navbar-nav ml-auto my-2 my-lg-0">
-                <li class="nav-item">@Html.ActionLink("Inicio", "Index", "Home") </li>&nbsp;&nbsp;&nbsp;&nbsp;
+                <li class="nav-item">@Html.ActionLink("Inicio", "Index", "Home") </li>&nbsp;
 
 
                 @if (User.IsInRole("Administrador"))
@@ -24,12 +24,12 @@
                 <li class="nav-item">@Html.ActionLink("Adopciones", "Index", "C_Adopciones") </li>&nbsp;&nbsp;&nbsp;&nbsp;
                 <li class="nav-item">@Html.ActionLink("Reportes", "C_ReportesIndex", "Home") </li>&nbsp;&nbsp;&nbsp;&nbsp;
             </ul>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 
 
             <p class="nav-item col-md-4" style="color:#808080;font-weight:bold">
-                Usuario | @Session["UserName"]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Usuario | @Session["UserName"]&nbsp;&nbsp;&nbsp;&nbsp;
 
                 <i class="fas fa-user-circle" style="font-size:30px; color:#f4623a;"></i>
             </p>&nbsp;&nbsp;
