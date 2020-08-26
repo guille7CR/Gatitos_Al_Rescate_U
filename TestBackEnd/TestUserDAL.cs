@@ -34,6 +34,41 @@ namespace TestBackEnd
 
         }
 
+        [TestMethod]
+        public void TestGetByName()
+        {
+
+            using (unidad = new UnidadDeTrabajo<Users>(new BDContext()))
+            {
+                Expression<Func<Users, bool>> consulta = (c => c.nombre.Contains("O"));
+                List<Users> lista = unidad.genericDAL.Find(consulta).ToList();
+
+                Assert.AreEqual(true, unidad.Complete());
+            }
+
+        }
+
+        [TestMethod]
+        public void TestRemove()
+        {
+
+            Users users = new Users
+            {
+
+                UserId = 17
+
+
+            };
+
+
+
+            using (unidad = new UnidadDeTrabajo<Users>(new BDContext()))
+            {
+                unidad.genericDAL.Remove(users);
+                Assert.AreEqual(true, unidad.Complete());
+            }
+
+        }
 
 
     }
