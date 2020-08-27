@@ -438,21 +438,21 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="nombre">
+                    <Textbox Name="nombrePersona">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!nombre.Value</Value>
+                              <Value>=Fields!nombrePersona.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>nombre</rd:DefaultName>
+                      <rd:DefaultName>nombrePersona</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -737,7 +737,7 @@
         <DataSetName>sp_ReporteAdopciones</DataSetName>
         <Top>0.65625in</Top>
         <Height>0.5in</Height>
-        <Width>16.25917in</Width>
+        <Width>16.25918in</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <Border>
@@ -749,7 +749,7 @@
     <Height>2.0625in</Height>
     <Style />
   </Body>
-  <Width>16.25917in</Width>
+  <Width>16.25918in</Width>
   <Page>
     <PageHeader>
       <Height>1.37375in</Height>
